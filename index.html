@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<nav class="navbar">
+
+  <!-- LOGO -->
+  <div class="logo-area">
+
+    <img src="images/logo.png" alt="Logo" class="logo-img">
+
+    <div class="logo-text">
+      Chennailal
+      <span>Packers & Movers</span>
+    </div>
+
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-toggle" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- MENU -->
+  <ul class="nav-links" id="navMenu">
+
+    <li><a href="/" class="active">Home</a></li>
+
+    <li><a href="/about.html">About</a></li>
+
+   <!-- SERVICES -->
+<li class="dropdown">
+
+  <div style="display:flex; align-items:center;">
+
+    <!-- Clicking this opens services page -->
+    <a href="/services.html">
+      Services
+    </a>
+
+    <!-- Clicking this opens dropdown -->
+    <button
+      class="dropdown-btn"
+      onclick="toggleDropdown(event, 'servicesMenu')">
+
+      ▾
+
+    </button>
+
+  </div>
+
+  <ul
+    class="dropdown-menu"
+    id="servicesMenu">
+
+    <li>
+      <a href="house-shifting-chennai.html">
+        House Shifting
+      </a>
+    </li>
+
+    <li>
+      <a href="office-shifting-chennai.html">
+        Office Shifting
+      </a>
+    </li>
+
+  </ul>
+
+</li>
+
+    
+    <!-- LOCATIONS -->
+  <li class="dropdown">
+
+  <button
+    class="dropdown-btn"
+    onclick="toggleDropdown(event, 'locationMenu')">
+
+    Locations ▾
+
+  </button>
+
+  <ul
+    class="dropdown-menu"
+    id="locationMenu">
+
+    <li><a href="/locations/adyar">Adyar</a></li>
+    <li><a href="/locations/madipakkam">Madipakkam</a></li>
+    <li><a href="/locations/sholinganallur">Sholinganallur</a></li>
+    <li><a href="/locations/anna-nagar">Anna Nagar</a></li>
+    <li><a href="/locations/padi">Padi</a></li>
+    <li><a href="/locations/ambattur">Ambattur</a></li>
+    <li><a href="/locations/kolathur">Kolathur</a></li>
+
+  </ul>
+
+</li>
+
+    <li><a href="/contact">Contact</a></li>
+
+    <li><a href="/blog">Blog</a></li>
+
+  </ul>
+
+  <a
+    href="tel:9361046387"
+    class="call-btn">
+
+    📞 93610 46387
+
+  </a>
+
+</nav>
+<script>
+
+function toggleMenu() {
+
+  document
+    .getElementById("navMenu")
+    .classList
+    .toggle("active");
+
+}
+
+function toggleDropdown(event, menuId) {
+
+  event.stopPropagation();
+
+  const currentMenu =
+    document.getElementById(menuId);
+
+  const isOpen =
+    currentMenu.classList.contains("show");
+
+  document
+    .querySelectorAll(".dropdown-menu")
+    .forEach(menu => {
+
+      menu.classList.remove("show");
+
+    });
+
+  if (!isOpen) {
+
+    currentMenu.classList.add("show");
+
+  }
+
+}
+
+document.addEventListener(
+  "click",
+  function () {
+
+    document
+      .querySelectorAll(".dropdown-menu")
+      .forEach(menu => {
+
+        menu.classList.remove("show");
+
+      });
+
+  }
+);
+
+</script>
+
+<body>
+<section class="hero">
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-left">
+
+    <div class="hero-badge">
+      <i class="ti ti-rosette-discount-check"></i>
+      Chennai's #1 Trusted Professional Packers & Movers Since 2008
+    </div>
+
+    <h1>
+      Move <em>Packers</em><br>
+      & <em>Movers</em><br>
+      Safe & <em>Stress-Free</em> Relocation
+    </h1>
+
+    <p class="hero-sub">
+      Reliable Packing and Moving Service in Chennai for household shifting,
+      office relocation, vehicle transport, and all India moving solutions.
+      We ensure secure packing, timely delivery, and affordable pricing.
+    </p>
+
+    <div class="hero-btns">
+      <a href="#quote" class="btn-primary">
+        Get Instant Quote
+      </a>
+
+      <a href="#process" class="btn-outline">
+        Watch How It Works
+      </a>
+    </div>
+
+    
+  </div>
+
+ <div class="hero-right">
+
+  <div class="quote-form">
+
+
+
+    <form id="quoteForm">
+
+
+
+      <div class="field">
+
+        <label>Full Name</label>
+
+        <input
+
+          type="text"
+
+          id="name"
+
+          placeholder="Enter Full Name"
+
+          required
+
+        >
+
+      </div>
+
+
+
+      <div class="field">
+
+        <label>Mobile Number</label>
+
+        <input
+
+          type="tel"
+
+          id="phone"
+
+          placeholder="Enter Mobile Number"
+
+          required
+
+        >
+
+      </div>
+
+
+
+      <div class="field">
+
+        <label>Current City</label>
+
+        <input
+
+          type="text"
+
+          id="from"
+
+          placeholder="Enter Current City"
+
+          required
+
+        >
+
+      </div>
+
+
+
+      <div class="field">
+
+        <label>To City</label>
+
+        <input
+
+          type="text"
+
+          id="to"
+
+          placeholder="Enter Destination City"
+
+          required
+
+        >
+
+      </div>
+
+
+
+      <div class="field">
+
+        <label>Select Service</label>
+
+
+
+        <select id="service" required>
+
+
+
+          <option value="">
+
+            Choose Service
+
+          </option>
+
+
+
+          <option>House Shifting</option>
+
+          <option>Office Relocation</option>
+
+          <option>Vehicle Transportation</option>
+
+          <option>Godown Shifting</option>
+
+          <option>AC Installation</option>
+
+          <option>Commercial Moves</option>
+
+
+
+        </select>
+
+
+
+      </div>
+
+
+
+      <button
+
+        type="submit"
+
+        class="quote-btn"
+
+        id="submitBtn">
+
+
+
+        Submit Enquiry →
+
+
+
+      </button>
+
+
+
+    </form>
+
+
+
+  </div>
+
+
+
+
+
+
+
+</div>
+
+</section>
+
+
+
+<section class="services">
+
+<div class="services-heading">
+
+  <div class="section-label reveal">
+    <span>OUR</span> SERVICES
+  </div>
+
+ 
+  <h2 class="section-title reveal">
+    Complete <span>Packing and Moving</span><br>
+    Services <span>in Chennai</span>
+  </h2>
+
+  <p class="section-sub reveal">
+   Get a quick estimate from the most Best Packers and Movers Service in Chennai. Safe relocation, transparent pricing, and hassle-free moving solutions for homes, offices, and vehicles.
+  </p>
+
+</div>
+
+<div class="services-grid">
+
+  <!-- CARD 1 -->
+  <div class="svc-card reveal">
+    <div class="svc-icon">
+      <i class="ti ti-home-move"></i>
+    </div>
+
+    <div class="svc-name">
+      Home Relocation
+    </div>
+
+    <div class="svc-desc">
+      Professional Household Shifting Services in Chennai with secure packing, careful handling, and safe transportation for a stress-free moving experience.
+    </div>
+
+    <a href="#" class="svc-link">
+      Learn More →
+    </a>
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="svc-card reveal">
+    <div class="svc-icon">
+      <i class="ti ti-building-skyscraper"></i>
+    </div>
+
+    <div class="svc-name">
+      Office Relocation
+    </div>
+
+    <div class="svc-desc">
+      Efficient office packing and moving services in Chennai with organized shifting, minimal downtime, and secure transport of office assets.
+    </div>
+
+    <a href="#" class="svc-link">
+      Learn More →
+    </a>
+  </div>
+
+  <!-- CARD 3 -->
+  <div class="svc-card reveal">
+    <div class="svc-icon">
+      <i class="ti ti-car"></i>
+    </div>
+
+    <div class="svc-name">
+      Vehicle Transport
+    </div>
+
+    <div class="svc-desc">
+    Safe Car and Bike Transport Services in  Chennai with reliable delivery, advanced safety measures, and nationwide coverage.
+    </div>
+
+    <a href="#" class="svc-link">
+      Learn More →
+    </a>
+  </div>
+
+  <!-- CARD 4 -->
+  <div class="svc-card reveal">
+    <div class="svc-icon">
+      <i class="ti ti-package"></i>
+    </div>
+
+    <div class="svc-name">
+      Packing & Unpacking
+    </div>
+
+    <div class="svc-desc">
+Top 5 Packers and Movers in Chennai using premium-quality materials for safe handling, damage-free transport, and quick unpacking support.    </div>
+
+    <a href="#" class="svc-link">
+      Learn More →
+    </a>
+  </div>
+
+  <!-- CARD 5 -->
+  <div class="svc-card reveal">
+    <div class="svc-icon">
+      <i class="ti ti-archive"></i>
+    </div>
+
+    <div class="svc-name">
+      Warehouse Storage
+    </div>
+
+    <div class="svc-desc">
+     Secure Warehouse Storage Service in chennai solutions with 24/7 CCTV monitoring, protected inventory management, and flexible short-term or long-term storage options.
+    </div>
+
+    <a href="#" class="svc-link">
+      Learn More →
+    </a>
+  </div>
+
+  <!-- CARD 6 -->
+  <div class="svc-card reveal">
+    <div class="svc-icon">
+      <i class="ti ti-world"></i>
+    </div>
+
+    <div class="svc-name">
+      International Relocation
+    </div>
+
+    <div class="svc-desc">
+     Reliable international Packing and Moving Services with end-to-end overseas relocation support, customs assistance, and secure global transportation.
+    </div>
+
+    <a href="#" class="svc-link">
+      Learn More →
+    </a>
+  </div>
+
+</div>
+
+<script>
+const serviceReveals = document.querySelectorAll('.reveal');
+
+function revealServices(){
+  serviceReveals.forEach((item)=>{
+    const top = item.getBoundingClientRect().top;
+
+    if(top < window.innerHeight - 100){
+      item.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealServices);
+revealServices();
+</script>
+
+</section>
+
+
+
+
+
+
+
+
+
+<section class="process-section">
+
+  <div class="section-label reveal">
+    <span>HOW</span> IT WORKS
+  </div>
+
+  <h2 class="section-title reveal">
+    From <span>Quote</span> To<br>
+    Successful <span>Move</span>
+  </h2>
+
+  <p class="section-sub reveal">
+    Our streamlined relocation process ensures your move is
+    smooth, secure, and stress-free from start to finish.
+  </p>
+
+  <div class="process-timeline">
+
+    <div class="process-card reveal">
+      <div class="step-num">01</div>
+      <h3>Get A Quote</h3>
+      <p>
+        Tell us your moving requirements and receive a transparent
+        quote with no hidden charges.
+      </p>
+    </div>
+
+    <div class="process-card reveal">
+      <div class="step-num">02</div>
+      <h3>Pre-Move Survey</h3>
+      <p>
+        Our team evaluates your items and creates the perfect
+        moving strategy.
+      </p>
+    </div>
+
+    <div class="process-card reveal">
+      <div class="step-num">03</div>
+      <h3>Pack & Load</h3>
+      <p>
+        Professional packing materials and skilled movers ensure
+        maximum protection.
+      </p>
+    </div>
+
+    <div class="process-card reveal">
+      <div class="step-num">04</div>
+      <h3>Deliver & Setup</h3>
+      <p>
+        We unload, unpack, and arrange everything at your new
+        destination.
+      </p>
+    </div>
+
+  </div>
+
+  <script>
+
+    const processReveal =
+    document.querySelectorAll('.process-section .reveal');
+
+    function revealProcess(){
+
+      processReveal.forEach((item)=>{
+
+        const top =
+        item.getBoundingClientRect().top;
+
+        const visible =
+        window.innerHeight - 100;
+
+        if(top < visible){
+          item.classList.add('active');
+        }
+
+      });
+
+    }
+
+    window.addEventListener(
+      'scroll',
+      revealProcess
+    );
+
+    revealProcess();
+
+  </script>
+
+</section>
+
+
+
+
+
+<section class="why-section">
+
+  <div class="why-left reveal">
+
+    <div class="section-label">
+      <span>WHY</span> CHOOSE US
+    </div>
+
+    <h2 class="section-title">
+      Chennai's Most <span>Trusted</span><br>
+      Moving <span>Partner</span>
+    </h2>
+
+    <p class="section-sub">
+      We don't just move boxes — we move lives.
+      Every promise we make is backed by years of
+      trust, professionalism, and accountability.
+    </p>
+
+    <div class="why-features">
+
+      <div class="why-feat reveal">
+        <div class="feat-check">
+          <i class="ti ti-check"></i>
+        </div>
+        <div class="feat-text">
+          <strong>Zero Damage Guarantee</strong>
+          <span>
+            Full transit insurance and complete
+            protection for your valuables.
+          </span>
+        </div>
+      </div>
+
+      <div class="why-feat reveal">
+        <div class="feat-check">
+          <i class="ti ti-check"></i>
+        </div>
+        <div class="feat-text">
+          <strong>Real-Time GPS Tracking</strong>
+          <span>
+            Track your shipment anytime with
+            live location updates.
+          </span>
+        </div>
+      </div>
+
+      <div class="why-feat reveal">
+        <div class="feat-check">
+          <i class="ti ti-check"></i>
+        </div>
+        <div class="feat-text">
+          <strong>Transparent Pricing</strong>
+          <span>
+            No hidden fees, no surprises.
+            What we quote is what you pay.
+          </span>
+        </div>
+      </div>
+
+      <div class="why-feat reveal">
+        <div class="feat-check">
+          <i class="ti ti-check"></i>
+        </div>
+        <div class="feat-text">
+          <strong>Verified Professionals</strong>
+          <span>
+            Skilled, trained and background
+            checked moving specialists.
+          </span>
+        </div>
+      </div>
+
+        
+    </div>
+
+  
+
+  </div>
+<div class="why-right reveal">
+
+  <!-- Main Large Image -->
+
+  <div class="img-big">
+    <img
+      src="images/hero_image1.jpeg"
+      alt="Professional Packing Service">
+  </div>
+
+  <!-- Small Floating Image -->
+
+  <div class="img-small">
+    <img
+      src="images/hero_image2.jpeg"
+      alt="Goods Loaded In Moving Truck">
+  </div>
+
+</div>
+
+
+  <script>
+
+    const whyReveal =
+    document.querySelectorAll('.why-section .reveal');
+
+    function revealWhy(){
+
+      whyReveal.forEach((item)=>{
+
+        const top =
+        item.getBoundingClientRect().top;
+
+        const visible =
+        window.innerHeight - 100;
+
+        if(top < visible){
+
+          item.classList.add('active');
+
+        }
+
+      });
+
+    }
+
+    window.addEventListener(
+      'scroll',
+      revealWhy
+    );
+
+    revealWhy();
+
+  </script>
+
+</section>
+
+
+
+
+
+
+<section class="testimonials-section">
+
+  <div class="section-label reveal">
+    <span>CUSTOMER</span> STORIES
+  </div>
+
+  <h2 class="section-title reveal">
+    15,000 Happy <span>Families</span><br>
+    Can't Be <span>Wrong</span>
+  </h2>
+
+  <p class="section-sub reveal">
+    Trusted by thousands of families and businesses across India.
+    Here’s what our customers have to say about their moving experience.
+  </p>
+
+  <div class="testi-grid">
+
+    <div class="testi-card reveal">
+      <div class="testi-tag">HOME SHIFTING</div>
+
+      <div class="stars">★★★★★</div>
+
+      <p class="testi-text">
+        "The team arrived exactly on time and packed everything perfectly.
+        Not even a single item was damaged. Exceptional service."
+      </p>
+
+      <div class="testi-author">
+        <div class="author-avatar">SR</div>
+
+        <div>
+          <div class="author-name">Suresh Rajan</div>
+          <div class="author-city">Anna Nagar → Velachery</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card reveal">
+      <div class="testi-tag">OFFICE MOVE</div>
+
+      <div class="stars">★★★★★</div>
+
+      <p class="testi-text">
+        "Our entire office was moved during a weekend without affecting
+        operations. Highly professional and extremely organized."
+      </p>
+
+      <div class="testi-author">
+        <div class="author-avatar">PM</div>
+
+        <div>
+          <div class="author-name">Priya Murthy</div>
+          <div class="author-city">Tidel Park → Sholinganallur</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card reveal">
+      <div class="testi-tag">INTERCITY MOVE</div>
+
+      <div class="stars">★★★★★</div>
+
+      <p class="testi-text">
+        "Real-time tracking, transparent pricing and on-time delivery.
+        Everything reached safely exactly as promised."
+      </p>
+
+      <div class="testi-author">
+        <div class="author-avatar">KV</div>
+
+        <div>
+          <div class="author-name">Karthik Venkat</div>
+          <div class="author-city">Chennai → Coimbatore</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+
+    const testimonialReveal =
+    document.querySelectorAll(
+      '.testimonials-section .reveal'
+    );
+
+    function revealTestimonials(){
+
+      testimonialReveal.forEach((item)=>{
+
+        const top =
+        item.getBoundingClientRect().top;
+
+        const visible =
+        window.innerHeight - 100;
+
+        if(top < visible){
+
+          item.classList.add('active');
+
+        }
+
+      });
+
+    }
+
+    window.addEventListener(
+      'scroll',
+      revealTestimonials
+    );
+
+    revealTestimonials();
+
+  </script>
+
+</section>
+
+
+
+
+
+
+<section class="premium-cta reveal">
+
+  <div class="cta-glow"></div>
+
+  <div class="cta-content">
+
+    <div class="cta-text">
+
+      <div class="cta-label">
+        <span>READY</span> TO MOVE?
+      </div>
+
+      <h2>
+        Let's Make Your<br>
+        <span>Next Move Easy</span>
+      </h2>
+
+      <p>
+        Get a free moving estimate in under 2 minutes.
+        No hidden costs, no obligations, just professional guidance.
+      </p>
+
+    </div>
+
+    <div class="cta-right">
+
+      <div class="cta-contact">
+
+        <div class="phone-icon">
+          ☎
+        </div>
+
+        <div>
+          <div class="cta-sub">
+            Call Us Directly
+          </div>
+
+          <div class="cta-phone">
+            +91 93610 46387
+          </div>
+        </div>
+
+      </div>
+
+      <a href="/contact" class="cta-btn">
+        Get Free Quote →
+      </a>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    const ctaReveal =
+    document.querySelectorAll('.premium-cta');
+
+    function revealCTA(){
+
+      ctaReveal.forEach((item)=>{
+
+        const top =
+        item.getBoundingClientRect().top;
+
+        const visible =
+        window.innerHeight - 100;
+
+        if(top < visible){
+
+          item.classList.add('active');
+
+        }
+
+      });
+
+    }
+
+    window.addEventListener(
+      'scroll',
+      revealCTA
+    );
+
+    revealCTA();
+
+  </script>
+
+</section>
+
+
+
+</div>
+
+
+<section class="faq-section">
+
+  <div class="faq-heading">
+
+    <div class="section-label">
+      <span>COMMON</span> QUESTIONS
+    </div>
+
+    <h2 class="section-title">
+      Frequently Asked <span>Questions</span>
+    </h2>
+
+    <p class="section-sub">
+      Find answers to the most common questions about our packing and moving services.
+    </p>
+
+  </div>
+
+  <div class="faq-wrapper">
+
+    <div class="faq-item active">
+
+      <button class="faq-question">
+        Why choose your local packers and movers ?
+        <span>−</span>
+      </button>
+
+      <div class="faq-answer">
+       We provide reliable, affordable, and professional packing and moving services in Chennai with safe transportation, quality packing materials, and timely delivery for home and office relocation.
+      </div>
+
+    </div>
+
+    <div class="faq-item">
+
+      <button class="faq-question">
+        What services do you offer as packers and movers in Chennai?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+       We offer household shifting, office relocation, vehicle transportation, packing and unpacking, warehouse storage, and international relocation services across Chennai and India.
+      </div>
+
+    </div>
+
+    <div class="faq-item">
+
+      <button class="faq-question">
+        What is the packers and movers Chennai price list?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+     The packers and movers Chennai price list depends on factors like distance, number of items, packing materials, floor level, and vehicle type. Local home shifting charges usually vary based on the size of the move and service requirements.
+      </div>
+
+    </div>
+
+    <div class="faq-item">
+
+      <button class="faq-question">
+        How do I choose good packers and movers in Chennai?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+        Choose good packers and movers based on customer reviews, experience, pricing transparency, safety measures, insurance support, and on-time delivery services.
+      </div>
+
+    </div>
+
+      <div class="faq-item">
+
+      <button class="faq-question">
+       Do you provide Chennai to Bangalore packers and movers service?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+        Yes, we provide Chennai to Bangalore packers and movers services with secure packing, safe transportation, doorstep delivery, and timely relocation support.
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<section class="location-section">
+
+  <div class="location-badge">
+    OUR SERVICE LOCATIONS
+  </div>
+
+
+  <h2 class="location-title">
+     Chennai Packers and Movers
+    <span>Service Areas</span>
+  </h2>
+
+  <p class="location-sub">
+Professional packing and moving services across Tamil Nadu, offering safe house shifting, office relocation, vehicle transportation, and intercity moving solutions at affordable prices.  </p>
+
+  <div class="location-grid">
+
+    <a href="#">Chennai</a>
+    <a href="#">Adyar</a>
+    <a href="#">Anna Nagar</a>
+    <a href="#">Padi</a>
+    <a href="#">Ambattur</a>
+    <a href="#">Tambaram</a>
+    <a href="#">Sholinganallur</a>
+    <a href="#">OMR</a>
+    <a href="#">Velachery</a>
+    <a href="#">Porur</a>
+    <a href="#">Madipakkam</a>
+    <a href="#">Kolathur</a>
+    <a href="#">Coimbatore</a>
+    <a href="#">Madurai</a>
+    <a href="#">Salem</a>
+    <a href="#">Tiruchirappalli</a>
+    <a href="#">Vellore</a>
+    <a href="#">Hosur</a>
+
+  </div>
+
+  <script>
+
+document.querySelectorAll(".faq-question")
+.forEach(button=>{
+
+button.addEventListener("click",()=>{
+
+const item=
+button.parentElement;
+
+document
+.querySelectorAll(".faq-item")
+.forEach(faq=>{
+
+if(faq!==item){
+
+faq.classList.remove("active");
+
+faq.querySelector("span")
+.innerHTML="+";
+
+}
+
+});
+
+item.classList.toggle("active");
+
+button.querySelector("span")
+.innerHTML=
+item.classList.contains("active")
+? "−"
+: "+";
+
+});
+
+});
+
+</script>
+</section>
+
+
+</body>
+
+
+
+<script>
+
+const reveals =
+document.querySelectorAll(
+'.reveal'
+);
+
+window.addEventListener(
+'scroll',
+() => {
+
+reveals.forEach(el=>{
+
+const top =
+el.getBoundingClientRect().top;
+
+const visible =
+window.innerHeight - 100;
+
+if(top < visible){
+el.classList.add('active');
+}
+
+});
+
+});
+
+</script>
+
+<footer>
+
+  <div class="footer-brand">
+
+    <!-- ADD YOUR LOGO HERE -->
+    <img src="images/logo.png" alt="Chennailal Packers" class="footer-logo">
+
+    <p>
+      Trusted relocation partner for Chennai families and businesses since 2008.
+      Licensed, insured, and committed to safe, secure and stress-free moving services.
+    </p>
+
+    <div class="footer-social">
+      <a href="#"><i class="ti ti-brand-facebook"></i></a>
+      <a href="#"><i class="ti ti-brand-instagram"></i></a>
+      <a href="#"><i class="ti ti-brand-linkedin"></i></a>
+      <a href="#"><i class="ti ti-brand-whatsapp"></i></a>
+    </div>
+
+  </div>
+
+  <div class="footer-col">
+    <h4>Services</h4>
+    <a href="#">Home Shifting</a>
+    <a href="#">Office Relocation</a>
+    <a href="#">Vehicle Transport</a>
+    <a href="#">Storage Solutions</a>
+    <a href="#">International Moves</a>
+  </div>
+
+  <div class="footer-col">
+    <h4>Coverage</h4>
+    <a href="#">Chennai Local</a>
+    <a href="#">Tamil Nadu</a>
+    <a href="#">Pan India</a>
+    <a href="#">International</a>
+  </div>
+
+  <div class="footer-col">
+    <h4>Company</h4>
+    <a href="#">About Us</a>
+    <a href="#">Our Team</a>
+    <a href="#">Blog & Tips</a>
+    <a href="#">Contact</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+
+  <div class="footer-bottom">
+
+    <p>
+      © 2026 Chennailal Packers & Movers. All Rights Reserved.
+    </p>
+
+    <p>
+      IBA Approved • ISO 9001:2015 • Trusted Across India
+    </p>
+
+  </div>
+
+</footer>
+</html>

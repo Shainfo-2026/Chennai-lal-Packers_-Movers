@@ -1,0 +1,1066 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="home.css">
+</head>
+
+
+<nav class="navbar">
+
+  <!-- LOGO -->
+  <div class="logo-area">
+
+    <img src="images/logo.png" alt="Logo" class="logo-img">
+
+    <div class="logo-text">
+      Chennailal
+      <span>Packers & Movers</span>
+    </div>
+
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-toggle" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- MENU -->
+  <ul class="nav-links" id="navMenu">
+
+    <li><a href="/" class="active">Home</a></li>
+
+    <li><a href="/about.html">About</a></li>
+
+   <!-- SERVICES -->
+<li class="dropdown">
+
+  <div style="display:flex; align-items:center;">
+
+    <!-- Clicking this opens services page -->
+    <a href="/services.html">
+      Services
+    </a>
+
+    <!-- Clicking this opens dropdown -->
+    <button
+      class="dropdown-btn"
+      onclick="toggleDropdown(event, 'servicesMenu')">
+
+      ▾
+
+    </button>
+
+  </div>
+
+  <ul
+    class="dropdown-menu"
+    id="servicesMenu">
+
+    <li>
+      <a href="house-shifting-chennai.html">
+        House Shifting
+      </a>
+    </li>
+
+    <li>
+      <a href="office-shifting-chennai.html">
+        Office Shifting
+      </a>
+    </li>
+
+  </ul>
+
+</li>
+
+    
+    <!-- LOCATIONS -->
+  <li class="dropdown">
+
+  <button
+    class="dropdown-btn"
+    onclick="toggleDropdown(event, 'locationMenu')">
+
+    Locations ▾
+
+  </button>
+
+  <ul
+    class="dropdown-menu"
+    id="locationMenu">
+
+    <li><a href="/locations/adyar">Adyar</a></li>
+    <li><a href="/locations/madipakkam">Madipakkam</a></li>
+    <li><a href="/locations/sholinganallur">Sholinganallur</a></li>
+    <li><a href="/locations/anna-nagar">Anna Nagar</a></li>
+    <li><a href="/locations/padi">Padi</a></li>
+    <li><a href="/locations/ambattur">Ambattur</a></li>
+    <li><a href="/locations/kolathur">Kolathur</a></li>
+
+  </ul>
+
+</li>
+
+    <li><a href="/contact">Contact</a></li>
+
+    <li><a href="/blog">Blog</a></li>
+
+  </ul>
+
+  <a
+    href="tel:9361046387"
+    class="call-btn">
+
+    📞 93610 46387
+
+  </a>
+
+</nav>
+<script>
+
+function toggleMenu() {
+
+  document
+    .getElementById("navMenu")
+    .classList
+    .toggle("active");
+
+}
+
+function toggleDropdown(event, menuId) {
+
+  event.stopPropagation();
+
+  const currentMenu =
+    document.getElementById(menuId);
+
+  const isOpen =
+    currentMenu.classList.contains("show");
+
+  document
+    .querySelectorAll(".dropdown-menu")
+    .forEach(menu => {
+
+      menu.classList.remove("show");
+
+    });
+
+  if (!isOpen) {
+
+    currentMenu.classList.add("show");
+
+  }
+
+}
+
+document.addEventListener(
+  "click",
+  function () {
+
+    document
+      .querySelectorAll(".dropdown-menu")
+      .forEach(menu => {
+
+        menu.classList.remove("show");
+
+      });
+
+  }
+);
+
+</script>
+
+<body>
+  
+
+
+
+
+<!-- HERO -->
+<div class="about-hero">
+
+  <!-- LEFT CONTENT -->
+  <div class="about-content reveal">
+
+    <div class="hero-eyebrow">
+      <span>OUR</span> STORY — EST. 2008, CHENNAI
+    </div>
+
+    <h1>
+      We don't just move <em>things.</em><br>
+      We move <em>lives.</em>
+    </h1>
+
+    <p>
+      What began as a two-truck operation out of T. Nagar has grown into Chennai's most trusted relocation company — built on one promise: that every family's belongings would be treated like our own.
+    </p>
+
+    <div class="founder-sig reveal">
+
+      <div class="sig-avatar">
+        CL
+      </div>
+
+      <div>
+
+        <div class="sig-name">
+          Lakshmanan Chandrasekaran
+        </div>
+
+        <div class="sig-title">
+          Founder & Managing Director
+        </div>
+
+        <div class="sig-quote">
+          "I started with a borrowed truck and a notebook. Today we move 100+ families a month — but the notebook mindset stays."
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- RIGHT TIMELINE -->
+  <div class="timeline-panel reveal">
+
+    <div class="timeline-label">
+      OUR JOURNEY
+    </div>
+
+    <div class="tl-item">
+
+      <div class="tl-dot highlight">
+        08
+      </div>
+
+      <div>
+
+        <div class="tl-year">
+          2008
+        </div>
+
+        <div class="tl-event">
+          Founded in T. Nagar, Chennai
+        </div>
+
+        <div class="tl-detail">
+          2 trucks, 4 staff, and a handwritten ledger. First 12 moves all within Chennai.
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="tl-item">
+
+      <div class="tl-dot">
+        12
+      </div>
+
+      <div>
+
+        <div class="tl-year">
+          2012
+        </div>
+
+        <div class="tl-event">
+          Expanded to Intercity Routes
+        </div>
+
+        <div class="tl-detail">
+          Added Bangalore, Hyderabad, and Coimbatore corridors. Fleet grew to 18 vehicles.
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="tl-item">
+
+      <div class="tl-dot">
+        16
+      </div>
+
+      <div>
+
+        <div class="tl-year">
+          2016
+        </div>
+
+        <div class="tl-event">
+          IBA Approval & ISO 9001 Certification
+        </div>
+
+        <div class="tl-detail">
+          Became one of 12 IBA-approved movers in Tamil Nadu. Launched warehouse facility.
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="tl-item">
+
+      <div class="tl-dot">
+        20
+      </div>
+
+      <div>
+
+        <div class="tl-year">
+          2020
+        </div>
+
+        <div class="tl-event">
+          Launched GPS Live Tracking
+        </div>
+
+        <div class="tl-detail">
+          First Chennai mover to offer real-time WhatsApp shipment updates during the COVID era.
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="tl-item">
+
+      <div class="tl-dot highlight">
+        24
+      </div>
+
+      <div>
+
+        <div class="tl-year">
+          2024
+        </div>
+
+        <div class="tl-event">
+          15,000th Move Milestone
+        </div>
+
+        <div class="tl-detail">
+          Crossed ₹50 Cr in annual revenue. 120-person team across Chennai, Coimbatore & Bengaluru.
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SCROLL REVEAL SCRIPT INSIDE SECTION -->
+  <script>
+
+    const aboutReveal =
+    document.querySelectorAll('.reveal');
+
+    function revealAbout(){
+
+      aboutReveal.forEach((item)=>{
+
+        const top =
+        item.getBoundingClientRect().top;
+
+        const visible =
+        window.innerHeight - 100;
+
+        if(top < visible){
+          item.classList.add('active');
+        }
+
+      });
+
+    }
+
+    window.addEventListener(
+      'scroll',
+      revealAbout
+    );
+
+    revealAbout();
+
+  </script>
+
+</div>
+
+<!-- STATS BAND -->
+<section class="stats-band">
+
+  <div class="stat-item reveal">
+    <div class="stat-num">15K+</div>
+    <div class="stat-lbl">Moves Completed</div>
+  </div>
+
+  <div class="stat-item reveal">
+    <div class="stat-num">16yrs</div>
+    <div class="stat-lbl">In Business</div>
+  </div>
+
+  <div class="stat-item reveal">
+    <div class="stat-num">120+</div>
+    <div class="stat-lbl">Team Members</div>
+  </div>
+
+  <div class="stat-item reveal">
+    <div class="stat-num">98%</div>
+    <div class="stat-lbl">On-Time Delivery</div>
+  </div>
+
+  <div class="stat-item reveal">
+    <div class="stat-num">4.9★</div>
+    <div class="stat-lbl">Google Rating</div>
+  </div>
+
+  <script>
+
+    const statsReveal =
+    document.querySelectorAll('.stats-band .reveal');
+
+    function revealStats(){
+
+      statsReveal.forEach((item)=>{
+
+        const top =
+        item.getBoundingClientRect().top;
+
+        const visible =
+        window.innerHeight - 100;
+
+        if(top < visible){
+          item.classList.add('active');
+        }
+
+      });
+
+    }
+
+    window.addEventListener(
+      'scroll',
+      revealStats
+    );
+
+    revealStats();
+
+  </script>
+
+</section>
+
+
+
+
+
+
+<!-- MISSION + VISION + VALUES -->
+<section class="mv-section">
+
+  <div class="mv-card mv-mission reveal">
+
+    <div class="mv-icon">🎯</div>
+
+    <h3>
+      Our <span>Mission</span>
+    </h3>
+
+    <p>
+      To make every relocation in India a stress-free, transparent experience — by combining trained professionals, honest pricing, and technology that keeps customers informed every step of the way.
+    </p>
+
+    <p class="extra-text">
+      We believe moving shouldn't feel like a gamble. It should feel like a service you're proud to have chosen.
+    </p>
+
+  </div>
+
+  <div class="mv-card mv-vision reveal">
+
+    <div class="mv-icon">🔭</div>
+
+    <h3>
+      Our <span>Vision</span>
+    </h3>
+
+    <p>
+      To become South India's most recommended relocation company by 2030 — with a presence in every major city, a zero-damage track record, and a team that treats every customer's home like their own.
+    </p>
+
+    <p class="extra-text">
+      Every truck we add, every city we enter, every hire we make — is measured against this vision.
+    </p>
+
+  </div>
+
+  <div class="mv-values reveal">
+
+    <h3>
+      The Values That <span>Drive Us</span>
+    </h3>
+
+    <div class="values-grid">
+
+      <div class="val-item">
+        <div class="val-icon">
+          <i class="ti ti-shield-check"></i>
+        </div>
+        <div class="val-name">Accountability</div>
+        <div class="val-desc">
+          We own every promise. If something goes wrong, we fix it — not deflect it.
+        </div>
+      </div>
+
+      <div class="val-item">
+        <div class="val-icon">
+          <i class="ti ti-eye"></i>
+        </div>
+        <div class="val-name">Transparency</div>
+        <div class="val-desc">
+          Fixed quotes, live tracking, itemised bills. No hidden charges, ever.
+        </div>
+      </div>
+
+      <div class="val-item">
+        <div class="val-icon">
+          <i class="ti ti-heart"></i>
+        </div>
+        <div class="val-name">Care</div>
+        <div class="val-desc">
+          Your grandmother's saree box gets the same attention as your flat-screen TV.
+        </div>
+      </div>
+
+      <div class="val-item">
+        <div class="val-icon">
+          <i class="ti ti-rocket"></i>
+        </div>
+        <div class="val-name">Improvement</div>
+        <div class="val-desc">
+          We debrief every move. Our 2024 team is better than our 2020 team because of it.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    const mvReveal =
+    document.querySelectorAll('.reveal');
+
+    function revealMV(){
+
+      mvReveal.forEach((item)=>{
+
+        const top =
+        item.getBoundingClientRect().top;
+
+        const visible =
+        window.innerHeight - 100;
+
+        if(top < visible){
+          item.classList.add('active');
+        }
+
+      });
+
+    }
+
+    window.addEventListener(
+      'scroll',
+      revealMV
+    );
+
+    revealMV();
+
+  </script>
+
+</section>
+
+
+
+
+
+
+<!-- TEAM -->
+<section class="team-section">
+
+  <div class="sec-label reveal">
+    <span>OUR</span> LEADERSHIP
+  </div>
+
+  <h2 class="sec-title reveal">
+    Meet Our <span>Leadership Team</span>
+  </h2>
+
+  <p class="sec-sub reveal">
+    A Chennai-rooted team with decades of combined experience in logistics, operations, and customer care.
+  </p>
+
+  <div class="team-grid">
+
+    <div class="team-card reveal">
+      <div class="team-avatar">LC</div>
+      <div class="team-body">
+        <div class="team-name">Lakshmanan Chandrasekaran</div>
+        <div class="team-role">Founder & Managing Director</div>
+        <div class="team-bio">
+          Started the company with a single truck in 2008. Built every process from the ground up.
+        </div>
+        <span class="team-yrs">16 Years Experience</span>
+      </div>
+    </div>
+
+    <div class="team-card reveal">
+      <div class="team-avatar">RK</div>
+      <div class="team-body">
+        <div class="team-name">Ramya Krishnan</div>
+        <div class="team-role">Head of Operations</div>
+        <div class="team-bio">
+          Manages daily dispatch of 40+ moves and ensures on-time execution.
+        </div>
+        <span class="team-yrs">9 Years Experience</span>
+      </div>
+    </div>
+
+    <div class="team-card reveal">
+      <div class="team-avatar">AS</div>
+      <div class="team-body">
+        <div class="team-name">Arjun Subramaniam</div>
+        <div class="team-role">Customer Experience Lead</div>
+        <div class="team-bio">
+          Maintains customer satisfaction and our exceptional Google reviews.
+        </div>
+        <span class="team-yrs">6 Years Experience</span>
+      </div>
+    </div>
+
+    <div class="team-card reveal">
+      <div class="team-avatar">MP</div>
+      <div class="team-body">
+        <div class="team-name">Meena Parthasarathy</div>
+        <div class="team-role">Packing Standards Manager</div>
+        <div class="team-bio">
+          Leads quality control and advanced packing procedures.
+        </div>
+        <span class="team-yrs">11 Years Experience</span>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+
+    const teamReveal =
+    document.querySelectorAll('.reveal');
+
+    function revealTeam(){
+
+      teamReveal.forEach((item)=>{
+
+        const top =
+        item.getBoundingClientRect().top;
+
+        const visible =
+        window.innerHeight - 100;
+
+        if(top < visible){
+          item.classList.add('active');
+        }
+
+      });
+
+    }
+
+    window.addEventListener(
+      'scroll',
+      revealTeam
+    );
+
+    revealTeam();
+
+  </script>
+
+</section>
+
+
+
+
+
+
+
+<!-- CERTIFICATIONS -->
+<section class="certs">
+
+  <div class="sec-label reveal">
+    <span>TRUSTED</span> & CERTIFIED
+  </div>
+
+  <h2 class="sec-title reveal">
+    Trusted, Verified & <span>Accredited</span>
+  </h2>
+
+  <p class="sec-sub reveal">
+    We hold every certification that matters in the Indian relocation industry and renew them every year without exception.
+  </p>
+
+  <div class="certs-grid">
+
+    <div class="cert-card reveal">
+      <div class="cert-badge">
+        <i class="ti ti-certificate"></i>
+      </div>
+      <div class="cert-name">IBA Approved Mover</div>
+      <div class="cert-desc">
+        Approved by the Indian Banks' Association for secure and trusted relocation services.
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-badge">
+        <i class="ti ti-award"></i>
+      </div>
+      <div class="cert-name">ISO 9001:2015</div>
+      <div class="cert-desc">
+        Quality Management System certified with documented operational excellence.
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-badge">
+        <i class="ti ti-world"></i>
+      </div>
+      <div class="cert-name">FIDI Member</div>
+      <div class="cert-desc">
+        Global standard certification for international relocation and logistics.
+      </div>
+    </div>
+
+    <div class="cert-card reveal">
+      <div class="cert-badge">
+        <i class="ti ti-shield-check"></i>
+      </div>
+      <div class="cert-name">Fully Insured</div>
+      <div class="cert-desc">
+        Up to ₹10 Lakh transit insurance coverage with complete protection.
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+
+    const certReveal =
+    document.querySelectorAll('.reveal');
+
+    function revealCerts(){
+
+      certReveal.forEach((item)=>{
+
+        const top =
+        item.getBoundingClientRect().top;
+
+        const visible =
+        window.innerHeight - 100;
+
+        if(top < visible){
+          item.classList.add('active');
+        }
+
+      });
+
+    }
+
+    window.addEventListener(
+      'scroll',
+      revealCerts
+    );
+
+    revealCerts();
+
+  </script>
+
+</section>
+
+
+
+
+
+
+<!-- COMMUNITY -->
+<section class="community">
+
+  <div class="comm-content reveal">
+
+    <div class="sec-label">
+      <span>BEYOND</span> BUSINESS
+    </div>
+
+    <h2>
+      Giving Back To The
+      <span>Chennai</span>
+      That Built Us
+    </h2>
+
+    <p>
+      Chennailal didn't grow despite Chennai — it grew because of Chennai.
+      The families who trusted us in 2008 are why we exist today.
+      Our community initiatives are our way of saying thank you.
+    </p>
+
+    <div class="comm-initiatives">
+
+      <div class="init-item reveal">
+        <div class="init-icon">
+          <i class="ti ti-school"></i>
+        </div>
+        <div class="init-text">
+          <strong>Skill India Packing Apprenticeship</strong>
+          <span>
+            30 free placements per year for youth from low-income families in Chennai.
+          </span>
+        </div>
+      </div>
+
+      <div class="init-item reveal">
+        <div class="init-icon">
+          <i class="ti ti-home"></i>
+        </div>
+        <div class="init-text">
+          <strong>Free Relocation For Flood Victims</strong>
+          <span>
+            210 displaced families relocated at zero cost during Chennai floods.
+          </span>
+        </div>
+      </div>
+
+      <div class="init-item reveal">
+        <div class="init-icon">
+          <i class="ti ti-recycle"></i>
+        </div>
+        <div class="init-text">
+          <strong>Green Packing Initiative</strong>
+          <span>
+            60% biodegradable packing materials with eco-friendly logistics.
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="comm-numbers reveal">
+
+    <div class="big-stat">
+
+      <div class="big-stat-num">
+        210
+      </div>
+
+      <div class="big-stat-label">
+        Families Moved Free During Chennai Floods
+      </div>
+
+    </div>
+
+    <div class="small-stats">
+
+      <div class="small-stat reveal">
+        <div class="small-stat-num">360+</div>
+        <div class="small-stat-label">
+          Apprentices Trained
+        </div>
+      </div>
+
+      <div class="small-stat reveal">
+        <div class="small-stat-num">60%</div>
+        <div class="small-stat-label">
+          Green Materials Used
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+  const communityReveal =
+  document.querySelectorAll('.reveal');
+
+  function revealCommunity(){
+
+    communityReveal.forEach((item)=>{
+
+      const top =
+      item.getBoundingClientRect().top;
+
+      const visible =
+      window.innerHeight - 100;
+
+      if(top < visible){
+        item.classList.add('active');
+      }
+
+    });
+
+  }
+
+  window.addEventListener(
+    'scroll',
+    revealCommunity
+  );
+
+  revealCommunity();
+
+  </script>
+
+</section>
+
+
+
+
+
+
+<!-- CTA -->
+<section class="cta-bar reveal">
+
+  <div class="cta-content">
+
+    <div class="cta-label">
+      <span>READY</span> TO MOVE?
+    </div>
+
+    <h2>
+      Join <span>15,000+</span> Chennai Families
+      <br>
+      Who Trusted <span>Chennailal</span>
+    </h2>
+
+    <p>
+      Safe moving, transparent pricing, professional packing,
+      and on-time delivery — every single time.
+    </p>
+
+  </div>
+
+  <div class="cta-btns">
+
+    <a href="tel:9361046387" class="btn-outline">
+      📞 Call Now
+    </a>
+
+    <a href="/contact" class="btn-primary">
+      Get Free Quote →
+    </a>
+
+  </div>
+
+  <script>
+
+    const ctaReveal =
+    document.querySelectorAll('.reveal');
+
+    function revealCTA(){
+
+      ctaReveal.forEach((item)=>{
+
+        const top =
+        item.getBoundingClientRect().top;
+
+        const visible =
+        window.innerHeight - 100;
+
+        if(top < visible){
+          item.classList.add('active');
+        }
+
+      });
+
+    }
+
+    window.addEventListener(
+      'scroll',
+      revealCTA
+    );
+
+    revealCTA();
+
+  </script>
+
+</section>
+
+
+</body>
+
+
+
+
+
+
+<footer>
+
+  <div class="footer-brand">
+
+    <!-- ADD YOUR LOGO HERE -->
+    <img src="images/logo.png" alt="Chennailal Packers" class="footer-logo">
+
+    <p>
+      Trusted relocation partner for Chennai families and businesses since 2008.
+      Licensed, insured, and committed to safe, secure and stress-free moving services.
+    </p>
+
+    <div class="footer-social">
+      <a href="#"><i class="ti ti-brand-facebook"></i></a>
+      <a href="#"><i class="ti ti-brand-instagram"></i></a>
+      <a href="#"><i class="ti ti-brand-linkedin"></i></a>
+      <a href="#"><i class="ti ti-brand-whatsapp"></i></a>
+    </div>
+
+  </div>
+
+  <div class="footer-col">
+    <h4>Services</h4>
+    <a href="#">Home Shifting</a>
+    <a href="#">Office Relocation</a>
+    <a href="#">Vehicle Transport</a>
+    <a href="#">Storage Solutions</a>
+    <a href="#">International Moves</a>
+  </div>
+
+  <div class="footer-col">
+    <h4>Coverage</h4>
+    <a href="#">Chennai Local</a>
+    <a href="#">Tamil Nadu</a>
+    <a href="#">Pan India</a>
+    <a href="#">International</a>
+  </div>
+
+  <div class="footer-col">
+    <h4>Company</h4>
+    <a href="#">About Us</a>
+    <a href="#">Our Team</a>
+    <a href="#">Blog & Tips</a>
+    <a href="#">Contact</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+
+  <div class="footer-bottom">
+
+    <p>
+      © 2026 Chennailal Packers & Movers. All Rights Reserved.
+    </p>
+
+    <p>
+      IBA Approved • ISO 9001:2015 • Trusted Across India
+    </p>
+
+  </div>
+
+</footer>
+</html>

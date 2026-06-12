@@ -1,0 +1,721 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="services.css">
+  <link rel="stylesheet" href="home.css">
+</head>
+
+<nav class="navbar">
+
+  <!-- LOGO -->
+  <div class="logo-area">
+
+    <img src="images/logo.png" alt="Logo" class="logo-img">
+
+    <div class="logo-text">
+      Chennailal
+      <span>Packers & Movers</span>
+    </div>
+
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-toggle" onclick="toggleMenu()">
+    ☰
+  </div>
+
+  <!-- MENU -->
+  <ul class="nav-links" id="navMenu">
+
+    <li><a href="/" class="active">Home</a></li>
+
+    <li><a href="/about.html">About</a></li>
+
+   <!-- SERVICES -->
+<li class="dropdown">
+
+  <div style="display:flex; align-items:center;">
+
+    <!-- Clicking this opens services page -->
+    <a href="/services.html">
+      Services
+    </a>
+
+    <!-- Clicking this opens dropdown -->
+    <button
+      class="dropdown-btn"
+      onclick="toggleDropdown(event, 'servicesMenu')">
+
+      ▾
+
+    </button>
+
+  </div>
+
+  <ul
+    class="dropdown-menu"
+    id="servicesMenu">
+
+    <li>
+      <a href="house-shifting-chennai.html">
+        House Shifting
+      </a>
+    </li>
+
+    <li>
+      <a href="office-shifting-chennai.html">
+        Office Shifting
+      </a>
+    </li>
+
+  </ul>
+
+</li>
+
+    
+    <!-- LOCATIONS -->
+  <li class="dropdown">
+
+  <button
+    class="dropdown-btn"
+    onclick="toggleDropdown(event, 'locationMenu')">
+
+    Locations ▾
+
+  </button>
+
+  <ul
+    class="dropdown-menu"
+    id="locationMenu">
+
+    <li><a href="/locations/adyar">Adyar</a></li>
+    <li><a href="/locations/madipakkam">Madipakkam</a></li>
+    <li><a href="/locations/sholinganallur">Sholinganallur</a></li>
+    <li><a href="/locations/anna-nagar">Anna Nagar</a></li>
+    <li><a href="/locations/padi">Padi</a></li>
+    <li><a href="/locations/ambattur">Ambattur</a></li>
+    <li><a href="/locations/kolathur">Kolathur</a></li>
+
+  </ul>
+
+</li>
+
+    <li><a href="/contact">Contact</a></li>
+
+    <li><a href="/blog">Blog</a></li>
+
+  </ul>
+
+  <a
+    href="tel:9361046387"
+    class="call-btn">
+
+    📞 93610 46387
+
+  </a>
+
+</nav>
+<script>
+
+function toggleMenu() {
+
+  document
+    .getElementById("navMenu")
+    .classList
+    .toggle("active");
+
+}
+
+function toggleDropdown(event, menuId) {
+
+  event.stopPropagation();
+
+  const currentMenu =
+    document.getElementById(menuId);
+
+  const isOpen =
+    currentMenu.classList.contains("show");
+
+  document
+    .querySelectorAll(".dropdown-menu")
+    .forEach(menu => {
+
+      menu.classList.remove("show");
+
+    });
+
+  if (!isOpen) {
+
+    currentMenu.classList.add("show");
+
+  }
+
+}
+
+document.addEventListener(
+  "click",
+  function () {
+
+    document
+      .querySelectorAll(".dropdown-menu")
+      .forEach(menu => {
+
+        menu.classList.remove("show");
+
+      });
+
+  }
+);
+
+</script>
+
+
+<body>
+  
+
+<section class="page">
+
+  <!-- HERO SECTION -->
+  <div class="hero">
+
+    <div class="hero-content">
+
+      <div class="hbadge">
+        <i class="ti ti-home-move"></i>
+        Residential Relocation
+      </div>
+
+      <h1>
+        Your Home, Moved With
+        <em>Zero Stress</em>
+      </h1>
+
+      <p>
+        Full-service home shifting with professional packing,
+        secure transportation, and complete setup assistance.
+      </p>
+
+      <div class="hbtns">
+        <button class="bp">Get Free Quote</button>
+        <button class="bo">Call Us Now</button>
+      </div>
+
+    </div>
+
+    <div class="hcard">
+
+      <div class="hcr">
+        <div class="hci">
+          <i class="ti ti-clock"></i>
+        </div>
+
+        <div>
+          <div class="hct">Booking Lead Time</div>
+          <div class="hcs">Same-day shifting available</div>
+        </div>
+
+        <div class="hcv">24 Hrs</div>
+      </div>
+
+      <div class="hcr">
+        <div class="hci">
+          <i class="ti ti-shield"></i>
+        </div>
+
+        <div>
+          <div class="hct">Transit Insurance</div>
+          <div class="hcs">Full coverage included</div>
+        </div>
+
+        <div class="hcv">₹10L</div>
+      </div>
+
+      <div class="hcr">
+        <div class="hci">
+          <i class="ti ti-star"></i>
+        </div>
+
+        <div>
+          <div class="hct">Customer Rating</div>
+          <div class="hcs">15,000+ families moved</div>
+        </div>
+
+        <div class="hcv">4.9★</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- STATS -->
+  <div class="sband">
+
+    <div>
+      <div class="sbn">15,000+</div>
+      <div class="sbl">Families Shifted</div>
+    </div>
+
+    <div>
+      <div class="sbn">98%</div>
+      <div class="sbl">On-Time Delivery</div>
+    </div>
+
+    <div>
+      <div class="sbn">16+</div>
+      <div class="sbl">Years Experience</div>
+    </div>
+
+    <div>
+      <div class="sbn">4.9★</div>
+      <div class="sbl">Google Rating</div>
+    </div>
+
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="body">
+
+    <div class="twocol">
+
+      <!-- LEFT SIDE -->
+      <div>
+
+        <div class="lbl">
+          HOW IT WORKS
+        </div>
+
+        <h2 class="stitle">
+          <span class="purple">5 Steps</span>
+          <span class="gold">To Your New Home</span>
+        </h2>
+
+        <p class="sdesc">
+          A smooth and transparent relocation process
+          designed for stress-free moving.
+        </p>
+
+        <div class="incls">
+
+          <div class="incl">
+
+            <div class="iico">
+              <i class="ti ti-search"></i>
+            </div>
+
+            <div>
+              <div class="inn">
+                Free Survey
+              </div>
+
+              <div class="ind">
+                Detailed inspection and fixed quotation.
+              </div>
+            </div>
+
+          </div>
+
+          <div class="incl">
+
+            <div class="iico">
+              <i class="ti ti-package"></i>
+            </div>
+
+            <div>
+              <div class="inn">
+                Professional Packing
+              </div>
+
+              <div class="ind">
+                5-layer packing for complete protection.
+              </div>
+            </div>
+
+          </div>
+
+          <div class="incl">
+
+            <div class="iico">
+              <i class="ti ti-truck"></i>
+            </div>
+
+            <div>
+              <div class="inn">
+                Safe Transportation
+              </div>
+
+              <div class="ind">
+                GPS-enabled dedicated transport vehicles.
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div>
+
+        <div class="lbl">
+          TRANSPARENT PRICING
+        </div>
+
+        <h2 class="stitle">
+          <span class="purple">Fixed Bills</span>
+          <span class="gold">No Surprises</span>
+        </h2>
+
+        <p class="sdesc">
+          All labour, packing, transport and fuel costs included.
+        </p>
+
+        <div class="pbox">
+
+          <div class="pbl">
+            PRICE RANGE
+          </div>
+
+          <div class="ptr">
+
+            <div>
+              <div class="ptn">
+                1 BHK Local Move
+              </div>
+
+              <div class="pts">
+                Within Chennai
+              </div>
+            </div>
+
+            <div class="ptv">
+              ₹4K–7K
+            </div>
+
+          </div>
+
+          <div class="ptr">
+
+            <div>
+              <div class="ptn">
+                2–3 BHK Move
+              </div>
+
+              <div class="pts">
+                Within Chennai
+              </div>
+            </div>
+
+            <div class="ptv">
+              ₹8K–14K
+            </div>
+
+          </div>
+
+          <div class="ptr">
+
+            <div>
+              <div class="ptn">
+                Chennai → Bangalore
+              </div>
+
+              <div class="pts">
+                Interstate
+              </div>
+            </div>
+
+            <div class="ptv">
+              ₹18K–28K
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="trow">
+
+    <div class="tc">
+
+      <div class="tcs">★★★★★</div>
+
+      <p class="tct">
+        Every item arrived safely. Excellent service.
+      </p>
+
+      <div class="tca">
+
+        <div class="tcav">
+          SR
+        </div>
+
+        <div>
+          <div class="tcan">
+            Suresh Rajan
+          </div>
+
+          <div class="tcam">
+            Anna Nagar
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+      <div class="tc">
+
+      <div class="tcs">★★★★★</div>
+
+      <p class="tct">
+        Every item arrived safely. Excellent service.
+      </p>
+
+      <div class="tca">
+
+        <div class="tcav">
+          SR
+        </div>
+
+        <div>
+          <div class="tcan">
+            Suresh Rajan
+          </div>
+
+          <div class="tcam">
+            Anna Nagar
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+      <div class="tc">
+
+      <div class="tcs">★★★★★</div>
+
+      <p class="tct">
+        Every item arrived safely. Excellent service.
+      </p>
+
+      <div class="tca">
+
+        <div class="tcav">
+          SR
+        </div>
+
+        <div>
+          <div class="tcan">
+            Suresh Rajan
+          </div>
+
+          <div class="tcam">
+            Anna Nagar
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+      <div class="tc">
+
+      <div class="tcs">★★★★★</div>
+
+      <p class="tct">
+        Every item arrived safely. Excellent service.
+      </p>
+
+      <div class="tca">
+
+        <div class="tcav">
+          SR
+        </div>
+
+        <div>
+          <div class="tcan">
+            Suresh Rajan
+          </div>
+
+          <div class="tcam">
+            Anna Nagar
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+      <div class="tc">
+
+      <div class="tcs">★★★★★</div>
+
+      <p class="tct">
+        Every item arrived safely. Excellent service.
+      </p>
+
+      <div class="tca">
+
+        <div class="tcav">
+          SR
+        </div>
+
+        <div>
+          <div class="tcan">
+            Suresh Rajan
+          </div>
+
+          <div class="tcam">
+            Anna Nagar
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+      <div class="tc">
+
+      <div class="tcs">★★★★★</div>
+
+      <p class="tct">
+        Every item arrived safely. Excellent service.
+      </p>
+
+      <div class="tca">
+
+        <div class="tcav">
+          SR
+        </div>
+
+        <div>
+          <div class="tcan">
+            Suresh Rajan
+          </div>
+
+          <div class="tcam">
+            Anna Nagar
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+ 
+
+</section>
+</body>
+
+
+
+
+
+
+
+<script>
+
+const reveals =
+document.querySelectorAll(
+'.reveal'
+);
+
+window.addEventListener(
+'scroll',
+() => {
+
+reveals.forEach(el=>{
+
+const top =
+el.getBoundingClientRect().top;
+
+const visible =
+window.innerHeight - 100;
+
+if(top < visible){
+el.classList.add('active');
+}
+
+});
+
+});
+
+</script>
+
+<footer>
+
+  <div class="footer-brand">
+
+    <!-- ADD YOUR LOGO HERE -->
+    <img src="images/logo.png" alt="Chennailal Packers" class="footer-logo">
+
+    <p>
+      Trusted relocation partner for Chennai families and businesses since 2008.
+      Licensed, insured, and committed to safe, secure and stress-free moving services.
+    </p>
+
+    <div class="footer-social">
+      <a href="#"><i class="ti ti-brand-facebook"></i></a>
+      <a href="#"><i class="ti ti-brand-instagram"></i></a>
+      <a href="#"><i class="ti ti-brand-linkedin"></i></a>
+      <a href="#"><i class="ti ti-brand-whatsapp"></i></a>
+    </div>
+
+  </div>
+
+  <div class="footer-col">
+    <h4>Services</h4>
+    <a href="#">Home Shifting</a>
+    <a href="#">Office Relocation</a>
+    <a href="#">Vehicle Transport</a>
+    <a href="#">Storage Solutions</a>
+    <a href="#">International Moves</a>
+  </div>
+
+  <div class="footer-col">
+    <h4>Coverage</h4>
+    <a href="#">Chennai Local</a>
+    <a href="#">Tamil Nadu</a>
+    <a href="#">Pan India</a>
+    <a href="#">International</a>
+  </div>
+
+  <div class="footer-col">
+    <h4>Company</h4>
+    <a href="#">About Us</a>
+    <a href="#">Our Team</a>
+    <a href="#">Blog & Tips</a>
+    <a href="#">Contact</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+
+  <div class="footer-bottom">
+
+    <p>
+      © 2026 Chennailal Packers & Movers. All Rights Reserved.
+    </p>
+
+    <p>
+      IBA Approved • ISO 9001:2015 • Trusted Across India
+    </p>
+
+  </div>
+
+</footer>
+
+
+
+</html>
+
+
+
+
