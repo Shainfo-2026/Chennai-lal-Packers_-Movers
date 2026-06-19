@@ -12,8 +12,7 @@
   <!-- LOGO -->
   <div class="logo-area">
 
-    <img src="images/logo.png" alt="Logo" class="logo-img">
-
+<img src="../images/logo.png" alt="Logo" class="logo-img">
     <div class="logo-text">
       Chennailal
       <span>Packers & Movers</span>
@@ -27,86 +26,70 @@
   </div>
 
   <!-- MENU -->
-  <ul class="nav-links" id="navMenu">
+ <ul class="nav-links" id="navMenu">
 
-    <li><a href="/" class="active">Home</a></li>
+    <li><a href="/">Home</a></li>
 
-    <li><a href="/about.html">About</a></li>
-<li><a href="about/index.html">About</a></li>
-   <!-- SERVICES -->
-<li class="dropdown">
+    <li><a href="/about">About</a></li>
 
-  <div style="display:flex; align-items:center;">
+    <!-- SERVICES -->
+    <li class="dropdown">
 
-    <!-- Clicking this opens services page -->
-    <a href="/services.html">
-      Services
-    </a>
+        <a
+            href="#"
+            onclick="toggleDropdown(event, 'servicesMenu')">
 
-    <!-- Clicking this opens dropdown -->
-    <button
-      class="dropdown-btn"
-      onclick="toggleDropdown(event, 'servicesMenu')">
+            Services ▾
 
-      ▾
+        </a>
 
-    </button>
+        <ul
+            class="dropdown-menu"
+            id="servicesMenu">
 
-  </div>
+            <li><a href="/house-shifting-chennai.html">House Shifting</a></li>
+            <li><a href="/office-shifting-chennai.html">Office Shifting</a></li>
+            <li><a href="/car-transportation-chennai">Car Transportation</a></li>
+            <li><a href="/bike-transportation-chennai">Bike Transportation</a></li>
+            <li><a href="/packing-unpacking-services">Packing & Unpacking</a></li>
+            <li><a href="/warehouse-storage-services">Warehouse & Storage</a></li>
 
-  <ul
-    class="dropdown-menu"
-    id="servicesMenu">
+        </ul>
 
-    <li>
-      <a href="house-shifting-chennai.html">
-        House Shifting
-      </a>
     </li>
 
-    <li>
-      <a href="office-shifting-chennai.html">
-        Office Shifting
-      </a>
-    </li>
-
-  </ul>
-
-</li>
-
-    
     <!-- LOCATIONS -->
-  <li class="dropdown">
+    <li class="dropdown">
 
-  <button
-    class="dropdown-btn"
-    onclick="toggleDropdown(event, 'locationMenu')">
+        <button
+            class="dropdown-btn"
+            onclick="toggleDropdown(event, 'locationMenu')">
 
-    Locations ▾
+            Locations ▾
 
-  </button>
+        </button>
 
-  <ul
-    class="dropdown-menu"
-    id="locationMenu">
+        <ul
+            class="dropdown-menu"
+            id="locationMenu">
 
-    <li><a href="/locations/adyar">Adyar</a></li>
-    <li><a href="/locations/madipakkam">Madipakkam</a></li>
-    <li><a href="/locations/sholinganallur">Sholinganallur</a></li>
-    <li><a href="/locations/anna-nagar">Anna Nagar</a></li>
-    <li><a href="/locations/padi">Padi</a></li>
-    <li><a href="/locations/ambattur">Ambattur</a></li>
-    <li><a href="/locations/kolathur">Kolathur</a></li>
+            <li><a href="/locations/adyar">Adyar</a></li>
+            <li><a href="/locations/madipakkam">Madipakkam</a></li>
+            <li><a href="/locations/sholinganallur">Sholinganallur</a></li>
+            <li><a href="/locations/anna-nagar">Anna Nagar</a></li>
+            <li><a href="/locations/padi">Padi</a></li>
+            <li><a href="/locations/ambattur">Ambattur</a></li>
+            <li><a href="/locations/kolathur">Kolathur</a></li>
 
-  </ul>
+        </ul>
 
-</li>
+    </li>
 
     <li><a href="/contact">Contact</a></li>
 
     <li><a href="/blog">Blog</a></li>
 
-  </ul>
+</ul>
 
   <a
     href="tel:9361046387"
@@ -121,53 +104,94 @@
 
 function toggleMenu() {
 
-  document
-    .getElementById("navMenu")
-    .classList
-    .toggle("active");
+    document
+        .getElementById("navMenu")
+        .classList
+        .toggle("active");
 
 }
 
 function toggleDropdown(event, menuId) {
 
-  event.stopPropagation();
+    event.preventDefault();
+    event.stopPropagation();
 
-  const currentMenu =
-    document.getElementById(menuId);
+    const currentMenu =
+        document.getElementById(menuId);
 
-  const isOpen =
-    currentMenu.classList.contains("show");
+    const isOpen =
+        currentMenu.classList.contains("show");
 
-  document
-    .querySelectorAll(".dropdown-menu")
-    .forEach(menu => {
+    document
+        .querySelectorAll(".dropdown-menu")
+        .forEach(menu => {
 
-      menu.classList.remove("show");
+            menu.classList.remove("show");
 
-    });
+        });
 
-  if (!isOpen) {
+    if (!isOpen) {
 
-    currentMenu.classList.add("show");
+        currentMenu.classList.add("show");
 
-  }
+    }
 
 }
 
 document.addEventListener(
-  "click",
-  function () {
+    "click",
+    function () {
+
+        document
+            .querySelectorAll(".dropdown-menu")
+            .forEach(menu => {
+
+                menu.classList.remove("show");
+
+            });
+
+    }
+);
+
+/* AUTO ACTIVE MENU */
+
+const currentPath =
+window.location.pathname;
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(link => {
+
+    const href =
+    link.getAttribute("href");
+
+    if (
+        href &&
+        href !== "#" &&
+        (
+            currentPath === href ||
+            currentPath === href + ".html"
+        )
+    ) {
+
+        link.classList.add("active");
+
+    }
+
+});
+
+/* HOME PAGE */
+
+if (
+    currentPath === "/" ||
+    currentPath === "/index.html"
+) {
 
     document
-      .querySelectorAll(".dropdown-menu")
-      .forEach(menu => {
+        .querySelector('a[href="/"]')
+        ?.classList.add("active");
 
-        menu.classList.remove("show");
-
-      });
-
-  }
-);
+}
 
 </script>
 
@@ -399,7 +423,7 @@ document.addEventListener(
   <!-- CARD 1 -->
   <div class="svc-card reveal">
     <div class="svc-icon">
-      <i class="ti ti-home-move"></i>
+      <i class="ti ti-home-move">🏠</i>
     </div>
 
     <div class="svc-name">
@@ -418,7 +442,7 @@ document.addEventListener(
   <!-- CARD 2 -->
   <div class="svc-card reveal">
     <div class="svc-icon">
-      <i class="ti ti-building-skyscraper"></i>
+      <i class="ti ti-building-skyscraper">🏢</i>
     </div>
 
     <div class="svc-name">
@@ -437,7 +461,7 @@ document.addEventListener(
   <!-- CARD 3 -->
   <div class="svc-card reveal">
     <div class="svc-icon">
-      <i class="ti ti-car"></i>
+      <i class="ti ti-car">🚚</i>
     </div>
 
     <div class="svc-name">
@@ -456,7 +480,7 @@ document.addEventListener(
   <!-- CARD 4 -->
   <div class="svc-card reveal">
     <div class="svc-icon">
-      <i class="ti ti-package"></i>
+      <i class="ti ti-package">📦</i>
     </div>
 
     <div class="svc-name">
@@ -474,7 +498,7 @@ Top 5 Packers and Movers in Chennai using premium-quality materials for safe han
   <!-- CARD 5 -->
   <div class="svc-card reveal">
     <div class="svc-icon">
-      <i class="ti ti-archive"></i>
+      <i class="ti ti-archive">🏭</i>
     </div>
 
     <div class="svc-name">
@@ -493,7 +517,7 @@ Top 5 Packers and Movers in Chennai using premium-quality materials for safe han
   <!-- CARD 6 -->
   <div class="svc-card reveal">
     <div class="svc-icon">
-      <i class="ti ti-world"></i>
+      <i class="ti ti-world">🌍</i>
     </div>
 
     <div class="svc-name">

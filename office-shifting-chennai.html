@@ -14,8 +14,7 @@
   <!-- LOGO -->
   <div class="logo-area">
 
-    <img src="images/logo.png" alt="Logo" class="logo-img">
-
+<img src="../images/logo.png" alt="Logo" class="logo-img">
     <div class="logo-text">
       Chennailal
       <span>Packers & Movers</span>
@@ -29,86 +28,70 @@
   </div>
 
   <!-- MENU -->
-  <ul class="nav-links" id="navMenu">
+ <ul class="nav-links" id="navMenu">
 
-    <li><a href="/" class="active">Home</a></li>
+    <li><a href="/">Home</a></li>
 
-    <li><a href="/about.html">About</a></li>
+    <li><a href="/about">About</a></li>
 
-   <!-- SERVICES -->
-<li class="dropdown">
+    <!-- SERVICES -->
+    <li class="dropdown">
 
-  <div style="display:flex; align-items:center;">
+        <a
+            href="#"
+            onclick="toggleDropdown(event, 'servicesMenu')">
 
-    <!-- Clicking this opens services page -->
-    <a href="/services.html">
-      Services
-    </a>
+            Services ▾
 
-    <!-- Clicking this opens dropdown -->
-    <button
-      class="dropdown-btn"
-      onclick="toggleDropdown(event, 'servicesMenu')">
+        </a>
 
-      ▾
+        <ul
+            class="dropdown-menu"
+            id="servicesMenu">
 
-    </button>
+            <li><a href="/house-shifting-chennai.html">House Shifting</a></li>
+            <li><a href="/office-shifting-chennai.html">Office Shifting</a></li>
+            <li><a href="/car-transportation-chennai">Car Transportation</a></li>
+            <li><a href="/bike-transportation-chennai">Bike Transportation</a></li>
+            <li><a href="/packing-unpacking-services">Packing & Unpacking</a></li>
+            <li><a href="/warehouse-storage-services">Warehouse & Storage</a></li>
 
-  </div>
+        </ul>
 
-  <ul
-    class="dropdown-menu"
-    id="servicesMenu">
-
-    <li>
-      <a href="house-shifting-chennai.html">
-        House Shifting
-      </a>
     </li>
 
-    <li>
-      <a href="office-shifting-chennai.html">
-        Office Shifting
-      </a>
-    </li>
-
-  </ul>
-
-</li>
-
-    
     <!-- LOCATIONS -->
-  <li class="dropdown">
+    <li class="dropdown">
 
-  <button
-    class="dropdown-btn"
-    onclick="toggleDropdown(event, 'locationMenu')">
+        <button
+            class="dropdown-btn"
+            onclick="toggleDropdown(event, 'locationMenu')">
 
-    Locations ▾
+            Locations ▾
 
-  </button>
+        </button>
 
-  <ul
-    class="dropdown-menu"
-    id="locationMenu">
+        <ul
+            class="dropdown-menu"
+            id="locationMenu">
 
-    <li><a href="/locations/adyar">Adyar</a></li>
-    <li><a href="/locations/madipakkam">Madipakkam</a></li>
-    <li><a href="/locations/sholinganallur">Sholinganallur</a></li>
-    <li><a href="/locations/anna-nagar">Anna Nagar</a></li>
-    <li><a href="/locations/padi">Padi</a></li>
-    <li><a href="/locations/ambattur">Ambattur</a></li>
-    <li><a href="/locations/kolathur">Kolathur</a></li>
+            <li><a href="/locations/adyar">Adyar</a></li>
+            <li><a href="/locations/madipakkam">Madipakkam</a></li>
+            <li><a href="/locations/sholinganallur">Sholinganallur</a></li>
+            <li><a href="/locations/anna-nagar">Anna Nagar</a></li>
+            <li><a href="/locations/padi">Padi</a></li>
+            <li><a href="/locations/ambattur">Ambattur</a></li>
+            <li><a href="/locations/kolathur">Kolathur</a></li>
 
-  </ul>
+        </ul>
 
-</li>
+    </li>
 
     <li><a href="/contact">Contact</a></li>
 
     <li><a href="/blog">Blog</a></li>
 
-  </ul>
+</ul>
 
   <a
     href="tel:9361046387"
@@ -123,53 +106,94 @@
 
 function toggleMenu() {
 
-  document
-    .getElementById("navMenu")
-    .classList
-    .toggle("active");
+    document
+        .getElementById("navMenu")
+        .classList
+        .toggle("active");
 
 }
 
 function toggleDropdown(event, menuId) {
 
-  event.stopPropagation();
+    event.preventDefault();
+    event.stopPropagation();
 
-  const currentMenu =
-    document.getElementById(menuId);
+    const currentMenu =
+        document.getElementById(menuId);
 
-  const isOpen =
-    currentMenu.classList.contains("show");
+    const isOpen =
+        currentMenu.classList.contains("show");
 
-  document
-    .querySelectorAll(".dropdown-menu")
-    .forEach(menu => {
+    document
+        .querySelectorAll(".dropdown-menu")
+        .forEach(menu => {
 
-      menu.classList.remove("show");
+            menu.classList.remove("show");
 
-    });
+        });
 
-  if (!isOpen) {
+    if (!isOpen) {
 
-    currentMenu.classList.add("show");
+        currentMenu.classList.add("show");
 
-  }
+    }
 
 }
 
 document.addEventListener(
-  "click",
-  function () {
+    "click",
+    function () {
+
+        document
+            .querySelectorAll(".dropdown-menu")
+            .forEach(menu => {
+
+                menu.classList.remove("show");
+
+            });
+
+    }
+);
+
+/* AUTO ACTIVE MENU */
+
+const currentPath =
+window.location.pathname;
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(link => {
+
+    const href =
+    link.getAttribute("href");
+
+    if (
+        href &&
+        href !== "#" &&
+        (
+            currentPath === href ||
+            currentPath === href + ".html"
+        )
+    ) {
+
+        link.classList.add("active");
+
+    }
+
+});
+
+/* HOME PAGE */
+
+if (
+    currentPath === "/" ||
+    currentPath === "/index.html"
+) {
 
     document
-      .querySelectorAll(".dropdown-menu")
-      .forEach(menu => {
+        .querySelector('a[href="/"]')
+        ?.classList.add("active");
 
-        menu.classList.remove("show");
-
-      });
-
-  }
-);
+}
 
 </script>
 <body>
@@ -178,57 +202,61 @@ document.addEventListener(
 
 
 <!-- HERO -->
+
+
+
 <section class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-eyebrow">🏢 Office Shifting Services in Chennai</div>
-      <p class="hero-tagline">Minimize Downtime. Move with Confidence.</p>
-      <h1>Professional Office<br><span>Relocation Services</span><br>for Every Business</h1>
-      <p class="hero-desc">
-        Chennai Lal Packers and Movers ensures secure, efficient relocation of office furniture, IT equipment, documents, workstations, and all business assets — with minimal disruption to your operations.
-      </p>
-      <div class="hero-badges">
-        <span class="hero-badge"><span class="dot">✓</span> Minimal Business Disruption</span>
-        <span class="hero-badge"><span class="dot">✓</span> Safe IT Equipment Handling</span>
-        <span class="hero-badge"><span class="dot">✓</span> Weekend & After-Hours Moves</span>
-        <span class="hero-badge"><span class="dot">✓</span> Affordable Corporate Solutions</span>
-      </div>
-      <div class="hero-ctas">
-        <a href="#quote" class="btn-primary">🟡 Get Free Office Moving Quote</a>
-        <a href="tel:9361046387" class="btn-secondary">📞 Call: 93610 46387</a>
-      </div>
+
+    <div class="hero-inner">
+
+        <!-- LEFT -->
+        <div class="hero-content">
+
+            <div class="hero-eyebrow">
+                🏢 OFFICE SHIFTING SERVICES IN CHENNAI
+            </div>
+
+            <p class="hero-tagline">
+                Minimize Downtime. Move with Confidence.
+            </p>
+
+            <h1 class="hero-title">
+                Professional Office Relocation Services
+                <span>for Every Business</span>
+            </h1>
+
+            <p class="hero-desc">
+                Chennai Lal Packers and Movers ensures secure, efficient relocation of office furniture, IT equipment, documents, workstations, and all business assets with minimal disruption to your operations.
+            </p>
+
+            <div class="hero-badges">
+                <span>✓ Minimal Business Disruption</span>
+                <span>✓ Safe IT Equipment Handling</span>
+                <span>✓ Weekend & After-Hours Moves</span>
+                <span>✓ Affordable Corporate Solutions</span>
+            </div>
+
+            <div class="hero-ctas">
+                <a href="#" class="btn-primary">Get Free Office Moving Quote</a>
+                <a href="tel:9361046387" class="btn-secondary">Call: 93610 46387</a>
+            </div>
+
+        </div>
+
+        <!-- RIGHT CARD -->
+        <div class="hero-card">
+            ...
+        </div>
+
     </div>
 
-    <div class="hero-card">
-      <div class="hero-card-title">Why Businesses Choose Us</div>
-      <div class="stat-row">
-        <div class="stat-item">
-          <div class="stat-num">1000+</div>
-          <div class="stat-label">Offices Moved</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">10+</div>
-          <div class="stat-label">Years Experience</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">0</div>
-          <div class="stat-label">Data Loss Incidents</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">4.9★</div>
-          <div class="stat-label">Corporate Rating</div>
-        </div>
-      </div>
-      <div class="hero-highlight">
-        <div class="hero-highlight-icon">🔒</div>
-        <div>
-          <div class="hero-highlight-text">Secure IT & Server Relocation</div>
-          <div class="hero-highlight-sub">Specialists in technology-heavy office moves</div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
+
+
+
+
+
+
 
 <!-- PROCESS -->
 <section class="section bg-soft">

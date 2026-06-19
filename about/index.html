@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="about.css">
-  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="../about.css">
+<link rel="stylesheet" href="../home.css">
 </head>
 
 
@@ -15,8 +15,7 @@
   <!-- LOGO -->
   <div class="logo-area">
 
-    <img src="images/logo.png" alt="Logo" class="logo-img">
-
+<img src="../images/logo.png" alt="Logo" class="logo-img">
     <div class="logo-text">
       Chennailal
       <span>Packers & Movers</span>
@@ -30,86 +29,70 @@
   </div>
 
   <!-- MENU -->
-  <ul class="nav-links" id="navMenu">
+ <ul class="nav-links" id="navMenu">
 
-    <li><a href="/" class="active">Home</a></li>
+    <li><a href="/">Home</a></li>
 
-    <li><a href="/about.html">About</a></li>
+    <li><a href="/about">About</a></li>
 
-   <!-- SERVICES -->
-<li class="dropdown">
+    <!-- SERVICES -->
+    <li class="dropdown">
 
-  <div style="display:flex; align-items:center;">
+        <a
+            href="#"
+            onclick="toggleDropdown(event, 'servicesMenu')">
 
-    <!-- Clicking this opens services page -->
-    <a href="/services.html">
-      Services
-    </a>
+            Services ▾
 
-    <!-- Clicking this opens dropdown -->
-    <button
-      class="dropdown-btn"
-      onclick="toggleDropdown(event, 'servicesMenu')">
+        </a>
 
-      ▾
+        <ul
+            class="dropdown-menu"
+            id="servicesMenu">
 
-    </button>
+            <li><a href="/house-shifting-chennai.html">House Shifting</a></li>
+            <li><a href="/office-shifting-chennai.html">Office Shifting</a></li>
+            <li><a href="/car-transportation-chennai">Car Transportation</a></li>
+            <li><a href="/bike-transportation-chennai">Bike Transportation</a></li>
+            <li><a href="/packing-unpacking-services">Packing & Unpacking</a></li>
+            <li><a href="/warehouse-storage-services">Warehouse & Storage</a></li>
 
-  </div>
+        </ul>
 
-  <ul
-    class="dropdown-menu"
-    id="servicesMenu">
-
-    <li>
-      <a href="house-shifting-chennai.html">
-        House Shifting
-      </a>
     </li>
 
-    <li>
-      <a href="office-shifting-chennai.html">
-        Office Shifting
-      </a>
-    </li>
-
-  </ul>
-
-</li>
-
-    
     <!-- LOCATIONS -->
-  <li class="dropdown">
+    <li class="dropdown">
 
-  <button
-    class="dropdown-btn"
-    onclick="toggleDropdown(event, 'locationMenu')">
+        <button
+            class="dropdown-btn"
+            onclick="toggleDropdown(event, 'locationMenu')">
 
-    Locations ▾
+            Locations ▾
 
-  </button>
+        </button>
 
-  <ul
-    class="dropdown-menu"
-    id="locationMenu">
+        <ul
+            class="dropdown-menu"
+            id="locationMenu">
 
-    <li><a href="/locations/adyar">Adyar</a></li>
-    <li><a href="/locations/madipakkam">Madipakkam</a></li>
-    <li><a href="/locations/sholinganallur">Sholinganallur</a></li>
-    <li><a href="/locations/anna-nagar">Anna Nagar</a></li>
-    <li><a href="/locations/padi">Padi</a></li>
-    <li><a href="/locations/ambattur">Ambattur</a></li>
-    <li><a href="/locations/kolathur">Kolathur</a></li>
+            <li><a href="/locations/adyar">Adyar</a></li>
+            <li><a href="/locations/madipakkam">Madipakkam</a></li>
+            <li><a href="/locations/sholinganallur">Sholinganallur</a></li>
+            <li><a href="/locations/anna-nagar">Anna Nagar</a></li>
+            <li><a href="/locations/padi">Padi</a></li>
+            <li><a href="/locations/ambattur">Ambattur</a></li>
+            <li><a href="/locations/kolathur">Kolathur</a></li>
 
-  </ul>
+        </ul>
 
-</li>
+    </li>
 
     <li><a href="/contact">Contact</a></li>
 
     <li><a href="/blog">Blog</a></li>
 
-  </ul>
+</ul>
 
   <a
     href="tel:9361046387"
@@ -124,53 +107,94 @@
 
 function toggleMenu() {
 
-  document
-    .getElementById("navMenu")
-    .classList
-    .toggle("active");
+    document
+        .getElementById("navMenu")
+        .classList
+        .toggle("active");
 
 }
 
 function toggleDropdown(event, menuId) {
 
-  event.stopPropagation();
+    event.preventDefault();
+    event.stopPropagation();
 
-  const currentMenu =
-    document.getElementById(menuId);
+    const currentMenu =
+        document.getElementById(menuId);
 
-  const isOpen =
-    currentMenu.classList.contains("show");
+    const isOpen =
+        currentMenu.classList.contains("show");
 
-  document
-    .querySelectorAll(".dropdown-menu")
-    .forEach(menu => {
+    document
+        .querySelectorAll(".dropdown-menu")
+        .forEach(menu => {
 
-      menu.classList.remove("show");
+            menu.classList.remove("show");
 
-    });
+        });
 
-  if (!isOpen) {
+    if (!isOpen) {
 
-    currentMenu.classList.add("show");
+        currentMenu.classList.add("show");
 
-  }
+    }
 
 }
 
 document.addEventListener(
-  "click",
-  function () {
+    "click",
+    function () {
+
+        document
+            .querySelectorAll(".dropdown-menu")
+            .forEach(menu => {
+
+                menu.classList.remove("show");
+
+            });
+
+    }
+);
+
+/* AUTO ACTIVE MENU */
+
+const currentPath =
+window.location.pathname;
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(link => {
+
+    const href =
+    link.getAttribute("href");
+
+    if (
+        href &&
+        href !== "#" &&
+        (
+            currentPath === href ||
+            currentPath === href + ".html"
+        )
+    ) {
+
+        link.classList.add("active");
+
+    }
+
+});
+
+/* HOME PAGE */
+
+if (
+    currentPath === "/" ||
+    currentPath === "/index.html"
+) {
 
     document
-      .querySelectorAll(".dropdown-menu")
-      .forEach(menu => {
+        .querySelector('a[href="/"]')
+        ?.classList.add("active");
 
-        menu.classList.remove("show");
-
-      });
-
-  }
-);
+}
 
 </script>
 
@@ -226,133 +250,19 @@ document.addEventListener(
   </div>
 
   <!-- RIGHT TIMELINE -->
-  <div class="timeline-panel reveal">
+ <!-- RIGHT IMAGE BOX -->
+<div class="about-image reveal">
 
-    <div class="timeline-label">
-      OUR JOURNEY
-    </div>
+  <div class="image-frame">
 
-    <div class="tl-item">
-
-      <div class="tl-dot highlight">
-        08
-      </div>
-
-      <div>
-
-        <div class="tl-year">
-          2008
-        </div>
-
-        <div class="tl-event">
-          Founded in T. Nagar, Chennai
-        </div>
-
-        <div class="tl-detail">
-          2 trucks, 4 staff, and a handwritten ledger. First 12 moves all within Chennai.
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="tl-item">
-
-      <div class="tl-dot">
-        12
-      </div>
-
-      <div>
-
-        <div class="tl-year">
-          2012
-        </div>
-
-        <div class="tl-event">
-          Expanded to Intercity Routes
-        </div>
-
-        <div class="tl-detail">
-          Added Bangalore, Hyderabad, and Coimbatore corridors. Fleet grew to 18 vehicles.
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="tl-item">
-
-      <div class="tl-dot">
-        16
-      </div>
-
-      <div>
-
-        <div class="tl-year">
-          2016
-        </div>
-
-        <div class="tl-event">
-          IBA Approval & ISO 9001 Certification
-        </div>
-
-        <div class="tl-detail">
-          Became one of 12 IBA-approved movers in Tamil Nadu. Launched warehouse facility.
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="tl-item">
-
-      <div class="tl-dot">
-        20
-      </div>
-
-      <div>
-
-        <div class="tl-year">
-          2020
-        </div>
-
-        <div class="tl-event">
-          Launched GPS Live Tracking
-        </div>
-
-        <div class="tl-detail">
-          First Chennai mover to offer real-time WhatsApp shipment updates during the COVID era.
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="tl-item">
-
-      <div class="tl-dot highlight">
-        24
-      </div>
-
-      <div>
-
-        <div class="tl-year">
-          2024
-        </div>
-
-        <div class="tl-event">
-          15,000th Move Milestone
-        </div>
-
-        <div class="tl-detail">
-          Crossed ₹50 Cr in annual revenue. 120-person team across Chennai, Coimbatore & Bengaluru.
-        </div>
-
-      </div>
-
-    </div>
+    <img
+      src="images/about-company.jpg"
+      alt="Chennai Lal Packers and Movers"
+    >
 
   </div>
+
+</div>
 
   <!-- SCROLL REVEAL SCRIPT INSIDE SECTION -->
   <script>
@@ -505,7 +415,7 @@ document.addEventListener(
 
       <div class="val-item">
         <div class="val-icon">
-          <i class="ti ti-shield-check"></i>
+          <i class="ti ti-shield-check">🤝</i>
         </div>
         <div class="val-name">Accountability</div>
         <div class="val-desc">
@@ -515,7 +425,7 @@ document.addEventListener(
 
       <div class="val-item">
         <div class="val-icon">
-          <i class="ti ti-eye"></i>
+          <i class="ti ti-eye">👁</i>
         </div>
         <div class="val-name">Transparency</div>
         <div class="val-desc">
@@ -525,7 +435,7 @@ document.addEventListener(
 
       <div class="val-item">
         <div class="val-icon">
-          <i class="ti ti-heart"></i>
+          <i class="ti ti-heart">❤️</i>
         </div>
         <div class="val-name">Care</div>
         <div class="val-desc">
@@ -535,7 +445,7 @@ document.addEventListener(
 
       <div class="val-item">
         <div class="val-icon">
-          <i class="ti ti-rocket"></i>
+          <i class="ti ti-rocket">📈</i>
         </div>
         <div class="val-name">Improvement</div>
         <div class="val-desc">
@@ -587,7 +497,7 @@ document.addEventListener(
 
 
 <!-- TEAM -->
-<section class="team-section">
+<!-- <section class="team-section">
 
   <div class="sec-label reveal">
     <span>OUR</span> LEADERSHIP
@@ -685,7 +595,7 @@ document.addEventListener(
 
   </script>
 
-</section>
+</section> -->
 
 
 
@@ -694,7 +604,7 @@ document.addEventListener(
 
 
 <!-- CERTIFICATIONS -->
-<section class="certs">
+<!-- <section class="certs">
 
   <div class="sec-label reveal">
     <span>TRUSTED</span> & CERTIFIED
@@ -784,7 +694,7 @@ document.addEventListener(
 
   </script>
 
-</section>
+</section> -->
 
 
 
@@ -792,7 +702,7 @@ document.addEventListener(
 
 
 <!-- COMMUNITY -->
-<section class="community">
+<!-- <section class="community">
 
   <div class="comm-content reveal">
 
@@ -920,12 +830,598 @@ document.addEventListener(
 
   </script>
 
+</section> -->
+
+<section class="why-choose-section">
+
+    <div class="why-header reveal">
+
+        <span>WHY CHOOSE US</span>
+
+        <h2>
+            Why Chennai Chooses
+            <span>Chennai Lal Packers & Movers</span>
+        </h2>
+
+        <p>
+            Trusted by thousands of families and businesses for safe,
+            reliable, and hassle-free relocation services.
+        </p>
+
+    </div>
+
+    <div class="process-grid">
+
+        <div class="process-item reveal">
+
+            <div class="process-circle">01</div>
+
+            <div class="process-content">
+                <h3>Safe Packing</h3>
+                <p>
+                    Premium quality packing materials ensure maximum protection.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="process-item reveal">
+
+            <div class="process-circle">02</div>
+
+            <div class="process-content">
+                <h3>Timely Delivery</h3>
+                <p>
+                    On-time pickup and delivery with live updates.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="process-item reveal">
+
+            <div class="process-circle">03</div>
+
+            <div class="process-content">
+                <h3>Experienced Team</h3>
+                <p>
+                    Trained professionals for smooth and secure relocation.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="process-item reveal">
+
+            <div class="process-circle">04</div>
+
+            <div class="process-content">
+                <h3>Affordable Pricing</h3>
+                <p>
+                    Transparent quotes with no hidden charges.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="process-item reveal">
+
+            <div class="process-circle">05</div>
+
+            <div class="process-content">
+                <h3>GPS Tracking</h3>
+                <p>
+                    Track your shipment throughout the journey.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="process-item reveal">
+
+            <div class="process-circle">06</div>
+
+            <div class="process-content">
+                <h3>Insurance Support</h3>
+                <p>
+                    Additional protection for valuable items.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        const processReveal =
+        document.querySelectorAll('.reveal');
+
+        function revealProcess(){
+
+            processReveal.forEach((item,index)=>{
+
+                const top =
+                item.getBoundingClientRect().top;
+
+                const visible =
+                window.innerHeight - 100;
+
+                if(top < visible){
+
+                    setTimeout(()=>{
+
+                        item.classList.add('active');
+
+                    }, index * 120);
+
+                }
+
+            });
+
+        }
+
+        window.addEventListener(
+            'scroll',
+            revealProcess
+        );
+
+        revealProcess();
+
+    </script>
+
 </section>
 
 
 
 
 
+
+
+<section class="services-overview">
+
+    <div class="services-header reveal">
+
+        <!-- <span>SERVICES OVERVIEW</span> -->
+
+        <h2>
+            Service Overview
+            <span>Relocation Solutions</span>
+        </h2>
+
+        <p>
+            Professional moving solutions for homes, offices, vehicles,
+            storage, and interstate relocations.
+        </p>
+
+    </div>
+
+    <!-- ROW 1 -->
+
+    <div class="services-ribbon top-row">
+
+        <a href="/household-shifting" class="service-circle reveal">
+
+            <div class="service-icon">🚚</div>
+
+            <h3>Household Shifting</h3>
+
+        </a>
+
+        <a href="/office-relocation" class="service-circle reveal">
+
+            <div class="service-icon">🏢</div>
+
+            <h3>Office Relocation</h3>
+
+        </a>
+
+        <a href="/car-transportation" class="service-circle reveal">
+
+            <div class="service-icon">🚗</div>
+
+            <h3>Car Transportation</h3>
+
+        </a>
+
+    </div>
+
+    <!-- ROW 2 -->
+
+    <div class="services-ribbon bottom-row">
+
+        <a href="/bike-transportation" class="service-circle reveal">
+
+            <div class="service-icon">🏍</div>
+
+            <h3>Bike Transportation</h3>
+
+        </a>
+
+        <a href="/packing-unpacking" class="service-circle reveal">
+
+            <div class="service-icon">📦</div>
+
+            <h3>Packing & Unpacking</h3>
+
+        </a>
+
+        <a href="/warehouse-storage" class="service-circle reveal">
+
+            <div class="service-icon">🏭</div>
+
+            <h3>Warehouse & Storage</h3>
+
+        </a>
+
+        <a href="/interstate-moving" class="service-circle reveal">
+
+            <div class="service-icon">🌍</div>
+
+            <h3>Interstate Moving</h3>
+
+        </a>
+
+    </div>
+
+    <script>
+
+    const serviceReveal =
+    document.querySelectorAll('.reveal');
+
+    function revealServices(){
+
+        serviceReveal.forEach((item)=>{
+
+            const top =
+            item.getBoundingClientRect().top;
+
+            const visible =
+            window.innerHeight - 100;
+
+            if(top < visible){
+
+                item.classList.add('active');
+
+            }
+
+        });
+
+    }
+
+    window.addEventListener(
+        'scroll',
+        revealServices
+    );
+
+    revealServices();
+
+    </script>
+
+</section>
+
+
+
+
+
+<section class="journey-section">
+
+    <!-- HEADER -->
+
+    <div class="journey-header reveal">
+
+        <span>Building Trust, <span>One Move at a Time</span> </span>
+
+        <h2>
+            OUR JOURNEY
+        </h2>
+ 
+        <p>
+            From a small local moving company in Chennai to a trusted relocation
+            partner serving customers across India, our journey is built on
+            dedication, reliability, and customer satisfaction.
+        </p>
+
+    </div>
+
+    <!-- TIMELINE -->
+
+    <div class="timeline-wrapper">
+
+        <!-- 2008 -->
+
+        <div class="timeline-item reveal">
+
+            <div class="timeline-dot">
+                08
+            </div>
+
+            <div class="timeline-content">
+
+                <h3>2008</h3>
+
+                <h4>
+                    🚚 Founded in T. Nagar, Chennai
+                </h4>
+
+                <p>
+                    Started as a small local moving company serving residential
+                    customers with safe and reliable relocation services.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- 2012 -->
+
+        <div class="timeline-item reveal">
+
+            <div class="timeline-dot">
+                12
+            </div>
+
+            <div class="timeline-content">
+
+                <h3>2012</h3>
+
+                <h4>
+                    📈 Expanded Across Tamil Nadu
+                </h4>
+
+                <p>
+                    Added intercity moving routes and expanded our vehicle fleet
+                    to serve customers across major cities in Tamil Nadu.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- 2016 -->
+
+        <div class="timeline-item reveal">
+
+            <div class="timeline-dot">
+                16
+            </div>
+
+            <div class="timeline-content">
+
+                <h3>2016</h3>
+
+                <h4>
+                    🏆 ISO Certified Operations
+                </h4>
+
+                <p>
+                    Improved quality standards, operational efficiency, and
+                    customer service processes through certified best practices.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- 2020 -->
+
+        <div class="timeline-item reveal">
+
+            <div class="timeline-dot">
+                20
+            </div>
+
+            <div class="timeline-content">
+
+                <h3>2020</h3>
+
+                <h4>
+                    📍 GPS Live Tracking Introduced
+                </h4>
+
+                <p>
+                    Implemented real-time shipment tracking and live customer
+                    updates for a transparent moving experience.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- 2026 -->
+
+        <div class="timeline-item reveal">
+
+            <div class="timeline-dot">
+                26
+            </div>
+
+            <div class="timeline-content">
+
+                <h3>2026</h3>
+
+                <h4>
+                    🌟 Trusted Packers & Movers in Chennai
+                </h4>
+
+                <p>
+                    Successfully completed thousands of relocations across India
+                    and earned the trust of families and businesses alike.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- SCROLL REVEAL SCRIPT -->
+
+    <script>
+
+        const timelineReveal =
+        document.querySelectorAll('.reveal');
+
+        function revealTimeline(){
+
+            timelineReveal.forEach((item)=>{
+
+                const top =
+                item.getBoundingClientRect().top;
+
+                const visible =
+                window.innerHeight - 100;
+
+                if(top < visible){
+                    item.classList.add('active');
+                }
+
+            });
+
+        }
+
+        window.addEventListener(
+            'scroll',
+            revealTimeline
+        );
+
+        revealTimeline();
+
+    </script>
+
+</section>
+
+
+ 
+<section class="faq-section">
+
+  <div class="faq-heading">
+
+    <div class="section-label">
+      <span>COMMON</span> QUESTIONS
+    </div>
+
+    <h2 class="section-title">
+      Frequently Asked <span>Questions</span>
+    </h2>
+
+    <p class="section-sub">
+      Find answers to the most common questions about our packing and moving services.
+    </p>
+
+  </div>
+
+ <div class="faq-wrapper">
+
+    <div class="faq-item active">
+
+      <button class="faq-question">
+       Why should I choose Chennai Lal?
+        <span>−</span>
+      </button>
+
+      <div class="faq-answer">
+      I think you should choose Chennai Lal Packers and Movers in Chennai because we have been doing this for a time. We have helped a lot of people move their homes, offices, cars and other things from one place to another. Our team is very good at packing things moving them and getting them to you on time. This way you do not have to worry about anything.
+      </div>
+
+    </div>
+
+    <div class="faq-item">
+
+      <button class="faq-question">
+        What services do your house shifting services in Chennai include?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+     Our House Shifting Services in Chennai do a lot of things for you. We pack your things load them onto a truck move them unload them and even unpack them for you. We also take apart. Put back together any big furniture you have. If you need a place to store your things we can help you with that too. We take care of everything so you do not have to.
+      </div>
+
+    </div>
+
+    <div class="faq-item">
+
+      <button class="faq-question">
+        How much do packers and movers  Chennai price?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+   The cost of using Chennai Lal Packers and Movers chennai price is depends on a things. It depends on how we have to move your things how many things you have, how we need to pack them and a few other things. If you want to know how much it will cost you can ask us and we will give you a free quote. We will tell you everything you need to know. There will be no surprises.
+      </div>
+
+    </div>
+
+    <div class="faq-item">
+
+      <button class="faq-question">
+        Do you provide best office relocation services in Chennai?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+        Yes we do. Chennai Lal Packers and Movers in Chennai helps businesses move their offices. We are very good at making sure everything gets moved quickly and safely. We plan everything carefully so your business can get back to normal soon as possible.
+      </div>
+
+    </div>
+
+      <div class="faq-item">
+
+      <button class="faq-question">
+       Are my belongings during relocation?
+        <span>+</span>
+      </button>
+
+      <div class="faq-answer">
+        Yes your belongings are safe with Chennai Lal Packers and Movers in Chennai. We use good boxes and other packing materials to keep your things safe. Our staff is trained to handle your things. We have trucks to move your things in and we make sure everything is done carefully. This way you do not have to worry about your things getting broken. Chennai Lal Packers and Movers, in Chennai is one of the companies to help you move.
+      </div>
+
+    </div>
+  </div>
+
+
+   <script>
+
+document.querySelectorAll(".faq-question")
+.forEach(button=>{
+
+button.addEventListener("click",()=>{
+
+const item=
+button.parentElement;
+
+document
+.querySelectorAll(".faq-item")
+.forEach(faq=>{
+
+if(faq!==item){
+
+faq.classList.remove("active");
+
+faq.querySelector("span")
+.innerHTML="+";
+
+}
+
+});
+
+item.classList.toggle("active");
+
+button.querySelector("span")
+.innerHTML=
+item.classList.contains("active")
+? "−"
+: "+";
+
+});
+
+});
+
+</script>
+
+</section>
+
+ 
 
 <!-- CTA -->
 <section class="cta-bar reveal">
@@ -1008,8 +1504,7 @@ document.addEventListener(
   <div class="footer-brand">
 
     <!-- ADD YOUR LOGO HERE -->
-    <img src="images/logo.png" alt="Chennailal Packers" class="footer-logo">
-
+<img src="../images/logo.png" alt="Chennailal Packers" class="footer-logo">
     <p>
       Trusted relocation partner for Chennai families and businesses since 2008.
       Licensed, insured, and committed to safe, secure and stress-free moving services.
