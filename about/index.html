@@ -230,7 +230,7 @@ if (
       What began as a two-truck operation out of T. Nagar has grown into Chennai's most trusted relocation company — built on one promise: that every family's belongings would be treated like our own.
     </p>
 
-    <div class="founder-sig reveal">
+    <div class="founder-sig">
 
       <div class="sig-avatar">
         CL
@@ -256,55 +256,29 @@ if (
 
   </div>
 
-  <!-- RIGHT TIMELINE -->
- <!-- RIGHT IMAGE BOX -->
-<div class="about-image reveal">
+  <!-- RIGHT IMAGE -->
+  <div class="about-image reveal">
 
-  <div class="image-frame">
+    <div class="image-card">
 
-    <img
-      src="images/about-company.jpg"
-      alt="Chennai Lal Packers and Movers"
-    >
+<img
+  src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80"
+  alt="Professional Relocation Services"
+>
+      <div class="image-overlay">
+        <span>15,000+</span>
+        Successful Moves
+      </div>
+
+    </div>
 
   </div>
 
 </div>
 
-  <!-- SCROLL REVEAL SCRIPT INSIDE SECTION -->
-  <script>
 
-    const aboutReveal =
-    document.querySelectorAll('.reveal');
 
-    function revealAbout(){
 
-      aboutReveal.forEach((item)=>{
-
-        const top =
-        item.getBoundingClientRect().top;
-
-        const visible =
-        window.innerHeight - 100;
-
-        if(top < visible){
-          item.classList.add('active');
-        }
-
-      });
-
-    }
-
-    window.addEventListener(
-      'scroll',
-      revealAbout
-    );
-
-    revealAbout();
-
-  </script>
-
-</div>
 
 <!-- STATS BAND -->
 <section class="stats-band">
@@ -1005,71 +979,45 @@ if (
 
     <!-- ROW 1 -->
 
-    <div class="services-ribbon top-row">
+  <!-- ROW 1 -->
+<div class="services-ribbon top-row">
 
-        <a href="/household-shifting" class="service-circle reveal">
+    <a href="/services/House Shifting/" class="service-circle reveal">
+        <div class="service-icon">🏠</div>
+        <h3>House Shifting</h3>
+    </a>
 
-            <div class="service-icon">🚚</div>
+    <a href="/services/Office Shifting/" class="service-circle reveal">
+        <div class="service-icon">🏢</div>
+        <h3>Office Shifting</h3>
+    </a>
 
-            <h3>Household Shifting</h3>
+    <a href="/services/Transportation/" class="service-circle reveal">
+        <div class="service-icon">🚚</div>
+        <h3>Transportation</h3>
+    </a>
 
-        </a>
+</div>
 
-        <a href="/office-relocation" class="service-circle reveal">
+<!-- ROW 2 -->
+<div class="services-ribbon bottom-row">
 
-            <div class="service-icon">🏢</div>
+    <a href="/services/Commercial Moves/" class="service-circle reveal">
+        <div class="service-icon">🏬</div>
+        <h3>Commercial Moves</h3>
+    </a>
 
-            <h3>Office Relocation</h3>
+    <a href="/services/AC installations & Unistallation/" class="service-circle reveal">
+        <div class="service-icon">❄️</div>
+        <h3>AC Installation</h3>
+    </a>
 
-        </a>
+    <a href="/services/Godown Shifting/" class="service-circle reveal">
+        <div class="service-icon">🏭</div>
+        <h3>Godown Shifting</h3>
+    </a>
 
-        <a href="/car-transportation" class="service-circle reveal">
-
-            <div class="service-icon">🚗</div>
-
-            <h3>Car Transportation</h3>
-
-        </a>
-
-    </div>
-
-    <!-- ROW 2 -->
-
-    <div class="services-ribbon bottom-row">
-
-        <a href="/bike-transportation" class="service-circle reveal">
-
-            <div class="service-icon">🏍</div>
-
-            <h3>Bike Transportation</h3>
-
-        </a>
-
-        <a href="/packing-unpacking" class="service-circle reveal">
-
-            <div class="service-icon">📦</div>
-
-            <h3>Packing & Unpacking</h3>
-
-        </a>
-
-        <a href="/warehouse-storage" class="service-circle reveal">
-
-            <div class="service-icon">🏭</div>
-
-            <h3>Warehouse & Storage</h3>
-
-        </a>
-
-        <a href="/interstate-moving" class="service-circle reveal">
-
-            <div class="service-icon">🌍</div>
-
-            <h3>Interstate Moving</h3>
-
-        </a>
-
-    </div>
+</div>
 
     <script>
 

@@ -203,6 +203,9 @@ if (
 </script>
 
 <body>
+<!-- EMAILJS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <section class="hero">
 
   <div class="hero-overlay"></div>
@@ -227,181 +230,221 @@ if (
     </p>
 
     <div class="hero-btns">
-      <a href="#quote" class="btn-primary">
+
+      <a href="/Contact/" class="btn-primary">
         Get Instant Quote
       </a>
 
-      <a href="#process" class="btn-outline">
+      <a href="/Blog/" class="btn-outline">
         Watch How It Works
       </a>
+
     </div>
 
-    
   </div>
 
- <div class="hero-right">
+  <div class="hero-right">
 
-  <div class="quote-form">
+    <div class="quote-form">
 
+      <form id="quoteForm">
 
+        <div class="field">
 
-    <form id="quoteForm">
+          <label>Full Name</label>
 
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter Full Name"
+            required
+          >
 
+        </div>
 
-      <div class="field">
+        <div class="field">
 
-        <label>Full Name</label>
+          <label>Mobile Number</label>
 
-        <input
+          <input
+            type="tel"
+            id="phone"
+            placeholder="Enter Mobile Number"
+            required
+          >
 
-          type="text"
+        </div>
 
-          id="name"
+        <div class="field">
 
-          placeholder="Enter Full Name"
+          <label>Current City</label>
 
-          required
+          <input
+            type="text"
+            id="from"
+            placeholder="Enter Current City"
+            required
+          >
 
-        >
+        </div>
 
-      </div>
+        <div class="field">
 
+          <label>To City</label>
 
+          <input
+            type="text"
+            id="to"
+            placeholder="Enter Destination City"
+            required
+          >
 
-      <div class="field">
+        </div>
 
-        <label>Mobile Number</label>
+        <div class="field">
 
-        <input
+          <label>Select Service</label>
 
-          type="tel"
+          <select id="service" required>
 
-          id="phone"
+            <option value="">
+              Choose Service
+            </option>
 
-          placeholder="Enter Mobile Number"
+            <option>House Shifting</option>
+            <option>Office Relocation</option>
+            <option>Vehicle Transportation</option>
+            <option>Godown Shifting</option>
+            <option>AC Installation</option>
+            <option>Commercial Moves</option>
 
-          required
+          </select>
 
-        >
+        </div>
 
-      </div>
+        <button
+          type="submit"
+          class="quote-btn"
+          id="submitBtn">
 
+          Submit Enquiry →
 
+        </button>
 
-      <div class="field">
+      </form>
 
-        <label>Current City</label>
-
-        <input
-
-          type="text"
-
-          id="from"
-
-          placeholder="Enter Current City"
-
-          required
-
-        >
-
-      </div>
-
-
-
-      <div class="field">
-
-        <label>To City</label>
-
-        <input
-
-          type="text"
-
-          id="to"
-
-          placeholder="Enter Destination City"
-
-          required
-
-        >
-
-      </div>
-
-
-
-      <div class="field">
-
-        <label>Select Service</label>
-
-
-
-        <select id="service" required>
-
-
-
-          <option value="">
-
-            Choose Service
-
-          </option>
-
-
-
-          <option>House Shifting</option>
-
-          <option>Office Relocation</option>
-
-          <option>Vehicle Transportation</option>
-
-          <option>Godown Shifting</option>
-
-          <option>AC Installation</option>
-
-          <option>Commercial Moves</option>
-
-
-
-        </select>
-
-
-
-      </div>
-
-
-
-      <button
-
-        type="submit"
-
-        class="quote-btn"
-
-        id="submitBtn">
-
-
-
-        Submit Enquiry →
-
-
-
-      </button>
-
-
-
-    </form>
-
-
+    </div>
 
   </div>
+<script>
 
+/* ==========================
+   EMAILJS INITIALIZATION
+========================== */
 
+emailjs.init({
+  publicKey: "yxT-hRvX41RhpOdfZ"
+});
 
+/* ==========================
+   FORM SUBMIT
+========================== */
 
+document
+.getElementById("quoteForm")
+.addEventListener(
+  "submit",
+  function(e){
 
+    e.preventDefault();
 
+    const submitBtn =
+    document.getElementById("submitBtn");
 
-</div>
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = "Sending...";
 
+    const formData = {
+
+      name:
+      document.getElementById("name").value,
+
+      phone:
+      document.getElementById("phone").value,
+
+      from:
+      document.getElementById("from").value,
+
+      to:
+      document.getElementById("to").value,
+
+      service:
+      document.getElementById("service").value
+
+    };
+
+    emailjs.send(
+      "service_imdmeff",
+      "template_fj46ck6",
+      formData
+    )
+    .then(() => {
+
+      submitBtn.disabled = false;
+      submitBtn.innerHTML =
+      "Submit Enquiry →";
+
+      /* WhatsApp Message */
+
+      const message =
+`🚚 New Moving Enquiry
+
+👤 Name: ${formData.name}
+📞 Phone: ${formData.phone}
+📍 From: ${formData.from}
+📍 To: ${formData.to}
+📦 Service: ${formData.service}
+
+Please contact the customer ASAP.`;
+
+      const whatsappURL =
+      `https://wa.me/919361046387?text=${encodeURIComponent(message)}`;
+
+      window.open(
+        whatsappURL,
+        "_blank"
+      );
+
+      alert(
+        "✅ Enquiry Sent Successfully!"
+      );
+
+      document
+      .getElementById("quoteForm")
+      .reset();
+
+    })
+    .catch((error) => {
+
+      console.error(error);
+
+      submitBtn.disabled = false;
+      submitBtn.innerHTML =
+      "Submit Enquiry →";
+
+      alert(
+        "❌ Failed to send enquiry. Please try again."
+      );
+
+    });
+
+  }
+);
+
+</script>
 </section>
+
+
 
 
 
@@ -441,7 +484,7 @@ if (
       Professional Household Shifting Services in Chennai with secure packing, careful handling, and safe transportation for a stress-free moving experience.
     </div>
 
-    <a href="#" class="svc-link">
+    <a href="/services/House Shifting/" class="svc-link">
       Learn More →
     </a>
   </div>
@@ -460,7 +503,7 @@ if (
       Efficient office packing and moving services in Chennai with organized shifting, minimal downtime, and secure transport of office assets.
     </div>
 
-    <a href="#" class="svc-link">
+    <a href="/services/OfficeShifting/" class="svc-link">
       Learn More →
     </a>
   </div>
@@ -479,66 +522,68 @@ if (
     Safe Car and Bike Transport Services in  Chennai with reliable delivery, advanced safety measures, and nationwide coverage.
     </div>
 
-    <a href="#" class="svc-link">
+    <a href="/services/Transportation/" class="svc-link">
       Learn More →
     </a>
   </div>
 
   <!-- CARD 4 -->
-  <div class="svc-card reveal">
-    <div class="svc-icon">
-      <i class="ti ti-package">📦</i>
-    </div>
-
-    <div class="svc-name">
-      Packing & Unpacking
-    </div>
-
-    <div class="svc-desc">
-Top 5 Packers and Movers in Chennai using premium-quality materials for safe handling, damage-free transport, and quick unpacking support.    </div>
-
-    <a href="#" class="svc-link">
-      Learn More →
-    </a>
+ <!-- CARD 4 -->
+<div class="svc-card reveal">
+  <div class="svc-icon">
+    <i class="ti ti-building-factory">🏢</i>
   </div>
 
-  <!-- CARD 5 -->
-  <div class="svc-card reveal">
-    <div class="svc-icon">
-      <i class="ti ti-archive">🏭</i>
-    </div>
-
-    <div class="svc-name">
-      Warehouse Storage
-    </div>
-
-    <div class="svc-desc">
-     Secure Warehouse Storage Service in chennai solutions with 24/7 CCTV monitoring, protected inventory management, and flexible short-term or long-term storage options.
-    </div>
-
-    <a href="#" class="svc-link">
-      Learn More →
-    </a>
+  <div class="svc-name">
+    Commercial Moves
   </div>
 
-  <!-- CARD 6 -->
-  <div class="svc-card reveal">
-    <div class="svc-icon">
-      <i class="ti ti-world">🌍</i>
-    </div>
-
-    <div class="svc-name">
-      International Relocation
-    </div>
-
-    <div class="svc-desc">
-     Reliable international Packing and Moving Services with end-to-end overseas relocation support, customs assistance, and secure global transportation.
-    </div>
-
-    <a href="#" class="svc-link">
-      Learn More →
-    </a>
+  <div class="svc-desc">
+    Professional Commercial Relocation Services in Chennai for offices, shops, showrooms, and business establishments with safe packing and timely transportation.
   </div>
+
+  <a href="#" class="svc-link">
+    Learn More →
+  </a>
+</div>
+
+<!-- CARD 5 -->
+<div class="svc-card reveal">
+  <div class="svc-icon">
+    <i class="ti ti-snowflake">❄️</i>
+  </div>
+
+  <div class="svc-name">
+    AC Installation & Uninstallation
+  </div>
+
+  <div class="svc-desc">
+    Expert AC Installation and Uninstallation Services in Chennai with safe dismantling, secure transportation, and professional reinstallation support.
+  </div>
+
+  <a href="#" class="svc-link">
+    Learn More →
+  </a>
+</div>
+
+<!-- CARD 6 -->
+<div class="svc-card reveal">
+  <div class="svc-icon">
+    <i class="ti ti-warehouse">🏭</i>
+  </div>
+
+  <div class="svc-name">
+    Godown Shifting
+  </div>
+
+  <div class="svc-desc">
+    Reliable Godown Shifting Services in Chennai for warehouses, inventory, machinery, and storage units with secure handling and efficient relocation.
+  </div>
+
+  <a href="#" class="svc-link">
+    Learn More →
+  </a>
+</div>
 
 </div>
 
@@ -1123,28 +1168,28 @@ revealServices();
   <p class="location-sub">
 Professional packing and moving services across Tamil Nadu, offering safe house shifting, office relocation, vehicle transportation, and intercity moving solutions at affordable prices.  </p>
 
-  <div class="location-grid">
+<div class="location-grid">
 
-    <a href="#">Chennai</a>
-    <a href="#">Adyar</a>
-    <a href="#">Anna Nagar</a>
-    <a href="#">Padi</a>
-    <a href="#">Ambattur</a>
-    <a href="#">Tambaram</a>
-    <a href="#">Sholinganallur</a>
-    <a href="#">OMR</a>
-    <a href="#">Velachery</a>
-    <a href="#">Porur</a>
-    <a href="#">Madipakkam</a>
-    <a href="#">Kolathur</a>
-    <a href="#">Coimbatore</a>
-    <a href="#">Madurai</a>
-    <a href="#">Salem</a>
-    <a href="#">Tiruchirappalli</a>
-    <a href="#">Vellore</a>
-    <a href="#">Hosur</a>
+  <a href="/Contact/">Chennai</a>
+  <a href="/Contact/">Adyar</a>
+  <a href="/Contact/">Anna Nagar</a>
+  <a href="/Contact/">Padi</a>
+  <a href="/Contact/">Ambattur</a>
+  <a href="/Contact/">Tambaram</a>
+  <a href="/Contact/">Sholinganallur</a>
+  <a href="/Contact/">OMR</a>
+  <a href="/Contact/">Velachery</a>
+  <a href="/Contact/">Porur</a>
+  <a href="/Contact/">Madipakkam</a>
+  <a href="/Contact/">Kolathur</a>
+  <a href="/Contact/">Coimbatore</a>
+  <a href="/Contact/">Madurai</a>
+  <a href="/Contact/">Salem</a>
+  <a href="/Contact/">Tiruchirappalli</a>
+  <a href="/Contact/">Vellore</a>
+  <a href="/Contact/">Hosur</a>
 
-  </div>
+</div>
 
   <script>
 
