@@ -22,113 +22,197 @@
    
     /* ── HERO ── */
 
-.hero{
-    position:relative;
-    padding:80px 40px;
+
+
+  
+
+:root{
+--clr-purple:#3F0D7D;
+--clr-gold:#E8B12C;
+--clr-text:#24135F;
 }
 
-.hero-inner{
-    max-width:1400px;
-    margin:0 auto;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:60px;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-/* LEFT SIDE */
-
-.hero-content{
-    width:58%;
-    min-width:0;
+.body-main{
+font-family:'Inter',sans-serif;
+overflow-x:hidden;
 }
 
-.hero-title{
-    font-family:'Poppins',sans-serif;
-    font-size:72px;
-    line-height:1.05;
-    font-weight:800;
-    color:#fff;
-
-    margin-bottom:20px;
+/* SECTION */
+.office-hero-section{
+position:relative;
+min-height:100vh;
+display:flex;
+align-items:center;
+overflow:hidden;
 }
 
-.hero-title span{
-    display:block;
-    color:#F5A623;
+/* SLIDER */
+.office-hero-slider{
+position:absolute;
+inset:0;
+z-index:0;
 }
 
-.hero-desc{
-    max-width:700px;
-    font-size:18px;
-    line-height:1.8;
+.office-slide-item{
+position:absolute;
+inset:0;
+background-size:cover;
+background-position:center;
+opacity:0;
+transition:opacity 1.5s ease;
+transform:scale(1.05);
 }
 
-/* RIGHT SIDE */
-
-.hero-card{
-    width:420px;
-    flex-shrink:0;
-
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(12px);
-
-    border:1px solid rgba(255,255,255,.15);
-
-    border-radius:24px;
-    padding:32px;
+.office-slide-item.active-slide{
+opacity:1;
 }
 
-/* DESKTOP ONLY */
-
-@media(min-width:1200px){
-
-    .hero-title{
-        font-size:72px;
-    }
-
+.office-slide-item::after{
+content:'';
+position:absolute;
+inset:0;
+background:
+linear-gradient(90deg,rgba(20,10,40,.82),rgba(63,13,125,.45)),
+linear-gradient(180deg,rgba(63,13,125,.25),rgba(0,0,0,.25));
 }
 
-/* TABLET */
+/* CONTENT WRAPPER */
+.office-hero-container{
+position:relative;
+z-index:2;
+width:min(1400px,92%);
+margin:auto;
 
-@media(max-width:1024px){
-
-    .hero-inner{
-        flex-direction:column;
-        align-items:flex-start;
-    }
-
-    .hero-content{
-        width:100%;
-    }
-
-    .hero-card{
-        width:100%;
-        max-width:500px;
-    }
-
-    .hero-title{
-        font-size:52px;
-    }
-
+display:grid;
+grid-template-columns:1.2fr .8fr;
+gap:60px;
+align-items:center;
 }
 
-/* MOBILE */
-
-@media(max-width:768px){
-
-    .hero{
-        padding:60px 20px;
-    }
-
-    .hero-title{
-        font-size:38px;
-    }
-
+/* LEFT CONTENT */
+.office-hero-left{
+color:#fff;
 }
 
+.office-hero-badge{
+display:inline-block;
+padding:10px 18px;
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
+border-radius:50px;
+margin-bottom:20px;
+font-weight:600;
+}
 
+.office-hero-title{
+font-family:'Poppins',sans-serif;
+font-size:72px;
+font-weight:800;
+line-height:1.05;
+}
+
+.office-hero-highlight{
+color:var(--clr-gold);
+display:block;
+}
+
+.office-hero-description{
+margin-top:20px;
+font-size:18px;
+line-height:1.9;
+max-width:760px;
+}
+
+.office-feature-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+margin-top:25px;
+}
+
+.office-feature-item{
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(10px);
+padding:14px;
+border-radius:14px;
+}
+
+/* FORM */
+.office-glass-form{
+background:rgba(255,255,255,.18);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.25);
+padding:32px;
+border-radius:28px;
+box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.office-form-title{
+font-family:'Poppins',sans-serif;
+font-size:28px;
+font-weight:700;
+color:#fff;
+margin-bottom:10px;
+}
+
+.office-form-subtitle{
+color:#fff;
+margin-bottom:20px;
+}
+
+.office-form-input{
+width:100%;
+padding:15px;
+margin-bottom:12px;
+border:none;
+border-radius:12px;
+outline:none;
+}
+
+.office-primary-btn{
+display:inline-block;
+padding:16px 28px;
+background:var(--clr-gold);
+color:#000;
+font-weight:700;
+text-decoration:none;
+border-radius:50px;
+}
+
+/* REVEAL */
+.office-reveal{
+opacity:0;
+transform:translateY(60px);
+transition:1s ease;
+}
+
+.office-reveal.active-reveal{
+opacity:1;
+transform:none;
+}
+
+@media(max-width:991px){
+
+.office-hero-container{
+grid-template-columns:1fr;
+padding:80px 0;
+}
+
+.office-hero-title{
+font-size:42px;
+}
+
+.office-feature-grid{
+grid-template-columns:1fr;
+}
+
+}
 
 
 
