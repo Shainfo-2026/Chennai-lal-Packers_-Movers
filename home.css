@@ -3211,7 +3211,7 @@ margin-top:0;
 
 display:none;
 
-background:#3a1172;
+background:#f9f9f9;
 
 border-radius:0;
 
@@ -3227,7 +3227,7 @@ display:block;
 
 .dropdown-menu li a{
 
-color:#fff;
+color:#ffffff;
 
 padding-left:45px;
 
@@ -3235,9 +3235,9 @@ padding-left:45px;
 
 .dropdown-menu li a:hover{
 
-background:rgba(244,196,48,.15);
+background:rgba(255, 255, 255, 0.94);
 
-color:var(--gold);
+color: #106B2D;
 
 }
 
