@@ -13,6 +13,13 @@ body{
   background:var(--bg);
   color:var(--black);
 }
+html {
+  overflow-y: scroll;
+}
+
+body {
+  overflow-x: hidden;
+}
 .site{width:100%;overflow:hidden}
 
 /* NAV */
