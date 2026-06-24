@@ -2777,7 +2777,7 @@ body{font-family:'DM Sans',sans-serif;background:#fff;color:var(--navy)}
 ========================== */
 
 .journey-section{
-    padding:100px 5%;
+    padding:30px 5%;
     background:#f7f7f7;
     overflow:hidden;
 }
@@ -2790,7 +2790,7 @@ body{font-family:'DM Sans',sans-serif;background:#fff;color:var(--navy)}
 
 .journey-header span{
     display:block;
-    color:#46107d;
+    color: #e6b325;
     font-size:14px;
     font-weight:700;
     letter-spacing:4px;
@@ -2803,10 +2803,10 @@ body{font-family:'DM Sans',sans-serif;background:#fff;color:var(--navy)}
 }
 
 .journey-header h2{
-    font-size:68px;
+    font-size:50px;
     line-height:1.1;
     color:#46107d;
-    margin-bottom:20px;
+ 
     font-weight:700;
 }
 
@@ -2844,8 +2844,8 @@ body{font-family:'DM Sans',sans-serif;background:#fff;color:var(--navy)}
 
 .timeline-item{
     display:flex;
-    gap:35px;
-    margin-bottom:40px;
+    gap:30px;
+    margin-bottom:10px;
     position:relative;
 }
 

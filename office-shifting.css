@@ -46,7 +46,7 @@ overflow-x:hidden;
 /* SECTION */
 .office-hero-section{
 position:relative;
-min-height:100vh;
+min-height:80vh;
 display:flex;
 align-items:center;
 overflow:hidden;
@@ -217,17 +217,18 @@ grid-template-columns:1fr;
 
 
     /* ── SHARED SECTION ── */
-    .section { padding: 72px 40px; }
+    .section { padding: 10px 40px; }
     .section-inner { max-width: 1100px; margin: 0 auto; }
     .section-label {
-      font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; text-align: center;
       color: var(--brand-yellow-dark); margin-bottom: 10px;
     }
     .section-title {
       font-family: 'Poppins', sans-serif; font-size: clamp(22px, 3vw, 34px);
       font-weight: 800; color: var(--brand-navy); margin-bottom: 12px;
+      text-align: center;
     }
-    .section-sub { color: var(--text-mid); font-size: 16px; max-width: 560px; }
+    .section-sub { color: var(--text-mid); font-size: 16px; max-width: 560px; text-align: center; }
     .section-header { margin-bottom: 48px; }
     .section-header.center { text-align: center; }
     .section-header.center .section-sub { margin: 0 auto; }
@@ -284,7 +285,7 @@ grid-template-columns:1fr;
     /* ── PROMO BOX ── */
     .promo-box {
       margin-top: 52px;
-      background: linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-navy-mid) 100%);
+      background: #24135F;
       border-radius: 20px; padding: 40px 48px;
       display: flex; align-items: center; justify-content: space-between;
       gap: 24px; flex-wrap: wrap;
@@ -293,24 +294,126 @@ grid-template-columns:1fr;
     .promo-box p { color: #8EA4C8; font-size: 14px; }
 
     /* ── GALLERY ── */
-    .gallery-strip {
-      display: flex; gap: 16px; overflow-x: auto; padding-bottom: 8px;
-      scrollbar-width: thin;
-    }
-    .gallery-strip::-webkit-scrollbar { height: 4px; }
-    .gallery-strip::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-    .gallery-card {
-      min-width: 260px; height: 200px; border-radius: 16px; overflow: hidden;
-      position: relative; flex-shrink: 0;
-      background: linear-gradient(135deg, #1A2F52, #2B4A7A);
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 8px;
-    }
-    .gallery-card .g-icon { font-size: 48px; opacity: .55; }
-    .gallery-card .g-label { font-size: 11px; color: rgba(255,255,255,.45); font-weight: 600; letter-spacing: .1em; }
-    .gallery-card.accent { background: linear-gradient(135deg, var(--brand-yellow-dark), var(--brand-yellow)); }
-    .gallery-card.accent .g-icon { opacity: .45; }
-    .gallery-card.accent .g-label { color: rgba(13,31,60,.45); }
+/* ==========================
+   HOUSE SHIFTING GALLERY
+========================== */
+
+.gallery-strip{
+display:flex;
+gap:24px;
+overflow-x:auto;
+padding-bottom:15px;
+scroll-behavior:smooth;
+scrollbar-width:thin;
+}
+
+.gallery-strip::-webkit-scrollbar{
+height:6px;
+}
+
+.gallery-strip::-webkit-scrollbar-thumb{
+background:#d8d8d8;
+border-radius:50px;
+}
+
+.gallery-card{
+position:relative;
+min-width:320px;
+height:450px;
+border-radius:24px;
+overflow:hidden;
+flex-shrink:0;
+cursor:pointer;
+background:#24135F;
+box-shadow:0 15px 40px rgba(36,19,95,.12);
+transition:.45s ease;
+}
+
+.gallery-card:hover{
+transform:translateY(-10px);
+box-shadow:0 25px 60px rgba(36,19,95,.25);
+}
+
+.gallery-card img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+transition:transform .8s ease;
+}
+
+.gallery-card:hover img{
+transform:scale(1.08);
+}
+
+.gallery-overlay{
+position:absolute;
+left:0;
+right:0;
+bottom:0;
+padding:28px;
+background:
+linear-gradient(
+to top,
+rgba(36,19,95,.96),
+rgba(36,19,95,.55),
+transparent
+);
+}
+
+.gallery-label{
+display:block;
+font-size:15px;
+font-weight:700;
+letter-spacing:2px;
+color:#fff;
+text-transform:uppercase;
+}
+
+/* Hover Glow */
+
+.gallery-card::before{
+content:'';
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+180deg,
+transparent,
+rgba(232,177,44,.15)
+);
+opacity:0;
+transition:.4s;
+z-index:1;
+}
+
+.gallery-card:hover::before{
+opacity:1;
+}
+
+.gallery-overlay{
+z-index:2;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.gallery-card{
+min-width:260px;
+height:360px;
+}
+
+.gallery-overlay{
+padding:20px;
+}
+
+.gallery-label{
+font-size:13px;
+letter-spacing:1px;
+}
+
+}
 
     /* ── FAQ ── */
     .faq-list { max-width: 760px; margin: 0 auto; }

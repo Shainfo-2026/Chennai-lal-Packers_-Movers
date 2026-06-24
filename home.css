@@ -34,7 +34,16 @@ nav{background:var(--navy);display:flex;align-items:center;justify-content:space
 .nav-cta{  background:var(--lime);color:var(--purple);border:none;padding:9px 20px;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer}
 
 
-
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:99999;
+    background:rgba(15,23,42,.85);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+}
 .dropdown{
     position:relative;
 }
@@ -183,9 +192,9 @@ nav{background:var(--navy);display:flex;align-items:center;justify-content:space
 }
 
 .hero h1{
-  font-family:'Playfair Display',serif;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
-  font-size:72px;
+  font-size:50px;
 
   line-height:1.05;
 
@@ -777,7 +786,7 @@ nav{background:var(--navy);display:flex;align-items:center;justify-content:space
 
   border-radius:24px;
 
-  padding:24px;
+  padding:22px;
 
   position:relative;
 
@@ -791,14 +800,13 @@ nav{background:var(--navy);display:flex;align-items:center;justify-content:space
 
 .field{
 
-  margin-bottom:14px;
+  margin-bottom:2px;
 }
 
 .field label{
-
   display:block;
 
-  margin-bottom:8px;
+  margin-bottom:3px;
 
   color:#2B0A57;
 
@@ -1092,7 +1100,7 @@ nav{background:var(--navy);display:flex;align-items:center;justify-content:space
 
 .section-title{
   font-family:'Playfair Display',serif;
-  font-size:56px;
+  font-size:10px;
   font-weight:900;
   line-height:1.1;
   color:#2B0A57;
@@ -1107,7 +1115,7 @@ nav{background:var(--navy);display:flex;align-items:center;justify-content:space
   color:#000;
   font-size:18px;
   line-height:1.8;
-  max-width:700px;
+  max-width:800px;
   margin:auto;
 }
 
@@ -3298,13 +3306,9 @@ height:45px;
 
 .faq-section{
 
-  padding:70px 0px 0px;
+  padding:10px 0px 0px;
 
-  background:
-  linear-gradient(
-  180deg,
-  rgba(43,10,87,.04),
-  rgba(244,196,48,.08));
+  
 
   border-top:1px solid rgba(244,196,48,.15);
 
