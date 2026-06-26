@@ -245,43 +245,30 @@ document.addEventListener(
 );
 
 /* AUTO ACTIVE MENU */
+/* ===========================
+   AUTO ACTIVE MENU
+=========================== */
 
-const currentPath =
-window.location.pathname;
+const currentPath = window.location.pathname.replace(/\/$/, "");
 
-document
-.querySelectorAll(".nav-links a")
-.forEach(link => {
+document.querySelectorAll(".nav-links a").forEach(link => {
 
-    const href =
-    link.getAttribute("href");
+    const href = link.getAttribute("href");
 
-    if (
-        href &&
-        href !== "#" &&
-        (
-            currentPath === href ||
-            currentPath === href + ".html"
-        )
-    ) {
+    if (!href || href === "#") return;
 
+    const linkPath = href.replace(/\/$/, "");
+
+    if (currentPath === linkPath) {
         link.classList.add("active");
-
     }
 
 });
 
 /* HOME PAGE */
 
-if (
-    currentPath === "/" ||
-    currentPath === "/index.html"
-) {
-
-    document
-        .querySelector('a[href="/"]')
-        ?.classList.add("active");
-
+if (currentPath === "") {
+    document.querySelector('a[href="/"]')?.classList.add("active");
 }
 
 </script>
@@ -1318,7 +1305,25 @@ item.classList.contains("active")
 
 </body>
 
+<script>
 
+window.addEventListener("scroll",function(){
+
+    const navbar=document.querySelector(".navbar");
+
+    if(window.scrollY>20){
+
+        navbar.classList.add("scrolled");
+
+    }else{
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+});
+
+</script>
 
 <script>
 
