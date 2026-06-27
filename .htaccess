@@ -1,0 +1,5 @@
+RewriteEngine On
+
+RewriteRule ^blog/([^/]+)/?$ /Blog/index.html [L,QSA]
+
+RewriteRule ^blog/?$ /Blog/index.html [L,QSA]
