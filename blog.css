@@ -16,7 +16,7 @@ body{font-family:Arial,sans-serif;background:#fff}
 .blog-content h2{color:var(--text);margin-bottom:10px}
 .blog-content p{color:var(--gold)}
 
-#singlePage{display:none;padding:60px 0}
+#singlePage{display:block;padding:60px 0}
 .single-layout{width:85%;margin:auto;display:flex;gap:40px}
 .single-main{flex:1}
 .single-main h1{color:var(--text);margin-bottom:20px}
