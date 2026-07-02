@@ -596,7 +596,7 @@ const blogs = [
     metaTitle: "Planning a Move? Why Packers and Movers Chennai Are the Best Choice",
     metaDescription: "Planning a move in Chennai? Discover why professional packers and movers in Chennai offer safe packing, secure transportation, and stress-free home and office relocation.",
     metaKeywords: "planning, move, packers, movers, chennai, best, packers and movers, chennailal packers and movers",
-    heroTitle: "Planning a Move? Why <span class=\'hl\'>Packers and Movers Chennai Are the Best Choice for Stress</span>-Free Relocation",
+    // heroTitle: "Planning a Move? Why <span class=\'hl\'>Packers and Movers Chennai Are the Best Choice for Stress</span>-Free Relocation",
     content: [
       {type:"h2", text:"Planning a Move? Why Are Packers and Movers Chennai the Best Choice for Stress-Free Relocation?"},
       {type:"p", text:"Moving to a new house or office is exciting, but packing and transporting your belongings can quickly become stressful. Whether you\'re relocating your home, shifting your office, or transporting your vehicle, choosing experienced Packers and Movers Chennai makes the entire process safe, smooth, and hassle-free."},
@@ -1267,7 +1267,7 @@ function renderList(){
       <div class="blog-card reveal" style="transition-delay:${delay}s" data-slug="${b.slug}">
        <div class="card-thumb">
     <img src="${b.image}" alt="${b.title}">
-    <h3>${b.heroTitle}</h3>
+  
 </div>
         <div class="card-body">
           <h4>${b.cardTitle}</h4>
@@ -1315,7 +1315,7 @@ function renderBlog(slug){
       <div>
       <div class="detail-hero reveal">
     <img src="${blog.image}" alt="${blog.title}">
-    <h2>${blog.heroTitle}</h2>
+  
 </div>
         <span class="detail-date reveal">${blog.date}</span>
         <div class="article">${bodyHtml}</div>
