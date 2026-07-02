@@ -279,15 +279,27 @@ if (
   the live URL and got a 404 instead of the page.
 
   AFTER (this file): opening a post uses a "#" (hash) instead:
-        /blog#planning-a-move-why-packers-movers-chennai...
+        /blog/#planning-a-move-why-packers-movers-chennai...
   A "#..." fragment is NEVER sent to the server — the browser
-  only ever requests "/blog" itself, which already exists and
-  returns 200 OK. So:
-    - Refreshing a post URL works (loads /blog, then JS reads
+  only ever requests "/blog/" itself. Note the TRAILING SLASH:
+  this file's own nav bar already links to "/blog/", meaning
+  that is the real, deployed route on this server — "/blog"
+  WITHOUT the slash returned a plain "Not Found" once deployed
+  (confirmed by View Source on the live site), even though local
+  dev servers are usually lenient and resolve both the same way.
+  Using "/blog/" (matching the nav bar) is what actually exists
+  on the production server and returns 200 OK. So:
+    - Refreshing a post URL works (loads /blog/, then JS reads
       the hash and shows the right post).
     - Direct links / shared links work the same way.
     - Ctrl+U / View Source no longer 404s — it shows this file's
-      real HTML for "/blog".
+      real HTML for "/blog/".
+
+  IF YOU STILL SEE "Not Found" AFTER THIS FIX:
+  It means your hosting doesn't serve "/blog/" either — in that
+  case open your host's file manager / deploy folder and confirm
+  there is actually a file at "blog/index.html" (or equivalent),
+  and that this exact HTML file is the one deployed there.
 
   ONE HONEST LIMITATION THAT REMAINS:
   View Source (Ctrl+U) always shows the raw HTML the server sent
@@ -1117,7 +1129,7 @@ blogs.forEach(blog => {
 
   blogContainer.innerHTML += `
     <div class="blog-card" onclick="openBlog('${blog.id}')">
-      <a href="/blog#${blog.id}" onclick="return openBlog(event,'${blog.id}')">
+      <a href="/blog/#${blog.id}" onclick="return openBlog(event,'${blog.id}')">
         <img src="${blog.image}" alt="${blog.title}">
         <div class="blog-content">
           <h2>${blog.title}</h2>
@@ -1159,7 +1171,7 @@ function openBlog(eventOrId, maybeId){
   history.pushState(
     { blogId: blog.id },
     "",
-    "/blog#" + blog.id
+    "/blog/#" + blog.id
   );
 
   showBlog(blog);
@@ -1240,7 +1252,7 @@ function showList(){
     history.pushState(
    {},
    "",
-   "/blog"
+   "/blog/"
   );
 
   /* Restore the original site-wide meta tags when going back to
@@ -1288,11 +1300,11 @@ document.addEventListener("click",function(e){
 /*
   loadFromURL()
   ----------------------------
-  Reads the slug from the URL HASH (/blog#slug), not the path.
+  Reads the slug from the URL HASH (/blog/#slug), not the path.
   Runs on initial load, on browser back/forward (popstate), and
   on direct hash changes. This is what makes refresh, direct
   links, and Ctrl+U all work correctly since the server only
-  ever sees a request for "/blog".
+  ever sees a request for "/blog/".
 */
 function loadFromURL(){
 
