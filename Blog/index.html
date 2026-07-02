@@ -34,8 +34,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
   ul{list-style:none;}
   img{max-width:100%;display:block;}
 
-  /* ---------- HEADER ---------- */
- 
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.active{
+    opacity:1;
+    transform:translateY(0);
+  }
+
   /* ---------- MAIN WRAPPER ---------- */
   main{max-width:1280px;margin:0 auto;padding:40px 40px 80px;}
   @media(max-width:700px){main{padding:24px 16px 60px;}}
@@ -63,7 +72,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     border-radius:14px;
     overflow:hidden;
     cursor:pointer;
-    transition:transform .25s ease, box-shadow .25s ease;
+    transition:transform .25s ease, box-shadow .25s ease, opacity .6s ease;
     background:#fff;
   }
   .blog-card:hover{
@@ -208,6 +217,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
   .detail-date{color:var(--gold);font-weight:700;margin-bottom:22px;display:block;}
 
+  .article h2{
+    color:var(--purple);
+    font-size:26px;
+    margin:34px 0 16px;
+    line-height:1.3;
+  }
+  .article h2:first-child{margin-top:0;}
   .article p{margin-bottom:18px;color:#3a3a3a;font-size:16px;}
   .article h3{
     color:var(--purple);
@@ -217,6 +233,55 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
   .article strong{color:var(--text);}
   .article a{color:var(--purple);text-decoration:underline;}
   .article a:hover{color:var(--gold);}
+
+  /* article lists — fix invisible bullets / undefined items */
+  .article ul{
+    list-style:disc;
+    padding-left:22px;
+    margin-bottom:18px;
+  }
+  .article ol{
+    list-style:decimal;
+    padding-left:22px;
+    margin-bottom:18px;
+  }
+  .article ul li,
+  .article ol li{
+    margin-bottom:8px;
+    color:#3a3a3a;
+    font-size:16px;
+  }
+  .article ul li::marker,
+  .article ol li::marker{
+    color:var(--gold);
+    font-weight:700;
+  }
+
+  /* article table */
+  .table-wrapper{
+    overflow-x:auto;
+    margin-bottom:22px;
+  }
+  .compliance-table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:420px;
+  }
+  .compliance-table th,
+  .compliance-table td{
+    border:1px solid var(--gold);
+    padding:12px 14px;
+    text-align:left;
+    font-size:15px;
+    color:var(--text);
+  }
+  .compliance-table thead th{
+    background:var(--purple);
+    color:#fff;
+  }
+  .compliance-table tbody tr:nth-child(even){
+    background:var(--gray-bg);
+  }
 
   /* sidebar */
   .side-box{
@@ -302,6 +367,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
   .faq-item.open .faq-a{
     max-height:300px;
     padding:0 24px 20px;
+  }
+
+  /* No-FAQ note (fixes empty look when a post has no FAQs) */
+  .no-faq-note{
+    color:#6b6b6b;
+    font-size:15px;
+    padding:14px 4px;
   }
 
   /* ---------- FOOTER ---------- */
@@ -1060,9 +1132,7 @@ const blogs = [
       {type:"h2", text:"Conclusion"},
       {type:"p", text:"In today\'s global trade environment, compliance is not optional, it is essential. The right safety matches manufacturer does far more than supply products. They reduce business risks, simplify customs clearance, and help importers build long-term success in international markets. Contact us today to request samples, export quotations, and complete compliance documentation for your next bulk safety matches order."}
     ],
-    faqs: [
-
-    ]
+    faqs: []
   },
  
   {
@@ -1117,10 +1187,6 @@ const blogs = [
    ========================================================= */
 const app = document.getElementById('app');
 
-function slugify(text){
-  return text.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
-}
-
 function setMeta(blog){
   if(blog){
     document.getElementById('metaTitleTag').textContent = blog.metaTitle;
@@ -1133,18 +1199,72 @@ function setMeta(blog){
   }
 }
 
+/* ---------------------------------------------------------
+   BLOCK RENDERER (FIXED)
+   Previously only "h3" and a generic <p> fallback existed,
+   so ul / ol / table blocks printed "<p>undefined</p>"
+   because those blocks have `items` / `rows`, not `text`.
+   This renders every block type correctly and adds a
+   staggered .reveal class to each for scroll animation.
+--------------------------------------------------------- */
+function renderContentBlock(block, index){
+  const delay = `style="transition-delay:${Math.min(index * 0.05, 0.6)}s"`;
+
+  switch(block.type){
+
+    case "h2":
+      return `<h2 class="reveal" ${delay}>${block.text}</h2>`;
+
+    case "h3":
+      return `<h3 class="reveal" ${delay}>${block.text}</h3>`;
+
+    case "p":
+      return `<p class="reveal" ${delay}>${block.text}</p>`;
+
+    case "ul":
+      return `<ul class="reveal" ${delay}>${
+        block.items.map(item => `<li>${item}</li>`).join('')
+      }</ul>`;
+
+    case "ol":
+      return `<ol class="reveal" ${delay}>${
+        block.items.map(item => `<li>${item}</li>`).join('')
+      }</ol>`;
+
+    case "table": {
+      const [header, ...rows] = block.rows;
+      return `
+        <div class="table-wrapper reveal" ${delay}>
+          <table class="compliance-table">
+            <thead>
+              <tr>${header.map(h => `<th>${h}</th>`).join('')}</tr>
+            </thead>
+            <tbody>
+              ${rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    default:
+      return '';
+  }
+}
+
 function renderList(){
   setMeta(null);
   let html = `
-    <div class="list-heading">
+    <div class="list-heading reveal">
       <h2>Our Latest Blogs</h2>
       <div class="underline"></div>
     </div>
     <div class="blog-grid">
   `;
-  blogs.forEach(b => {
+  blogs.forEach((b, i) => {
+    const delay = Math.min(i * 0.06, 0.6);
     html += `
-      <div class="blog-card" data-slug="${b.slug}">
+      <div class="blog-card reveal" style="transition-delay:${delay}s" data-slug="${b.slug}">
        <div class="card-thumb">
     <img src="${b.image}" alt="${b.title}">
     <h3>${b.heroTitle}</h3>
@@ -1162,6 +1282,8 @@ function renderList(){
   document.querySelectorAll('.blog-card').forEach(card=>{
     card.addEventListener('click', ()=> navigate(card.dataset.slug));
   });
+
+  initReveal();
 }
 
 function renderBlog(slug){
@@ -1169,36 +1291,37 @@ function renderBlog(slug){
   if(!blog){ renderList(); return; }
   setMeta(blog);
 
-  let bodyHtml = blog.content.map(block=>{
-    if(block.type === "h3") return `<h3>${block.text}</h3>`;
-    return `<p>${block.text}</p>`;
-  }).join('');
+  const bodyHtml = blog.content
+    .map((block, i) => renderContentBlock(block, i))
+    .join('');
 
-  let faqHtml = blog.faqs.map((f,i)=>`
-    <div class="faq-item" data-index="${i}">
-      <div class="faq-q">
-        <span>${f.q}</span>
-        <span class="faq-icon"></span>
-      </div>
-      <div class="faq-a"><p>${f.a}</p></div>
-    </div>
-  `).join('');
+  const faqHtml = blog.faqs.length
+    ? blog.faqs.map((f,i)=>`
+        <div class="faq-item reveal" style="transition-delay:${Math.min(i*0.08,0.5)}s" data-index="${i}">
+          <div class="faq-q">
+            <span>${f.q}</span>
+            <span class="faq-icon"></span>
+          </div>
+          <div class="faq-a"><p>${f.a}</p></div>
+        </div>
+      `).join('')
+    : `<p class="no-faq-note reveal">No FAQs added for this post yet.</p>`;
 
   app.innerHTML = `
     <span class="back-link" id="backLink">← Back to Blogs</span>
-    <h1 class="detail-title">${blog.title}</h1>
+    <h1 class="detail-title reveal">${blog.title}</h1>
 
     <div class="detail-wrap">
       <div>
-      <div class="detail-hero">
+      <div class="detail-hero reveal">
     <img src="${blog.image}" alt="${blog.title}">
     <h2>${blog.heroTitle}</h2>
 </div>
-        <span class="detail-date">${blog.date}</span>
+        <span class="detail-date reveal">${blog.date}</span>
         <div class="article">${bodyHtml}</div>
 
         <div class="faq-section">
-          <div class="list-heading">
+          <div class="list-heading reveal">
             <h2>Frequently Asked Questions</h2>
             <div class="underline"></div>
           </div>
@@ -1207,12 +1330,12 @@ function renderBlog(slug){
       </div>
 
       <aside>
-        <div class="side-box">
+        <div class="side-box reveal">
           <h3>Get Free Moving Quote</h3>
           <p>Safe, Fast &amp; Affordable Relocation Services</p>
           <a class="side-btn" href="tel:9361046387">Call Now</a>
         </div>
-        <div class="trust-box">
+        <div class="trust-box reveal" style="transition-delay:.15s">
           <h3>Why Customers Trust Us</h3>
           <ul>
             <li>5000+ Successful Moves</li>
@@ -1234,6 +1357,8 @@ function renderBlog(slug){
   });
 
   window.scrollTo({top:0, behavior:'smooth'});
+
+  initReveal();
 }
 
 function router(){
@@ -1278,37 +1403,48 @@ if(navMenu){
 
 }
 
-/* initial load */
-router();
-</script>
+/* ---------------------------------------------------------
+   SCROLL REVEAL (FIXED)
+   Previously this ran ONCE at page-load time and queried
+   .reveal elements that didn't exist yet (the router hadn't
+   rendered anything into #app), so the animation never had
+   any elements to work with. initReveal() is now called
+   fresh every time renderList()/renderBlog() paint new
+   content, and also fires once immediately so items already
+   in the viewport aren't stuck invisible.
+--------------------------------------------------------- */
+function initReveal(){
 
-<script>
+  const reveals = document.querySelectorAll('.reveal');
 
-const reveals =
-document.querySelectorAll(
-'.reveal'
-);
+  function revealOnScroll(){
 
-window.addEventListener(
-'scroll',
-() => {
+    reveals.forEach(el=>{
 
-reveals.forEach(el=>{
+      const top = el.getBoundingClientRect().top;
+      const visible = window.innerHeight - 100;
 
-const top =
-el.getBoundingClientRect().top;
+      if(top < visible){
+        el.classList.add('active');
+      }
 
-const visible =
-window.innerHeight - 100;
+    });
 
-if(top < visible){
-el.classList.add('active');
+  }
+
+  if(window.__revealHandler){
+    window.removeEventListener('scroll', window.__revealHandler);
+  }
+
+  window.__revealHandler = revealOnScroll;
+  window.addEventListener('scroll', revealOnScroll);
+
+  revealOnScroll();
+
 }
 
-});
-
-});
-
+/* initial load */
+router();
 </script>
 
 <footer class="footer-main">
