@@ -148,16 +148,7 @@
     });
   </script>
 
-  <!--
-    REMOVED: leftover Vite/React build artifacts that were previously here
-    (type="module" index-*.js, modulepreload reactVendor-*.js, index-*.css).
-    This page is plain HTML/vanilla JS — nothing on it uses React. Those
-    three tags were forcing the browser to download, parse, and execute an
-    entire unused React + vendor JS bundle plus a separate CSS bundle on
-    every load. That is almost certainly the single largest contributor to
-    a low performance score here, so it has been deleted rather than kept.
-  -->
-
+  
 </head>
 
 
@@ -1261,18 +1252,7 @@ window.addEventListener("scroll",function(){
 
 </script>
 
-<!-- ==========================================================
-     SCROLL REVEAL (CONSOLIDATED)
-     Previously there were 6 separate `scroll` listeners
-     (services, process, why, testimonials, cta, plus a final
-     catch-all), each calling getBoundingClientRect() on every
-     scroll event — that forces a synchronous layout recalculation
-     repeatedly while the user scrolls, which is expensive on
-     mobile. Replaced with a single IntersectionObserver, which
-     the browser can evaluate far more cheaply off the main
-     scroll path, and which stops observing an element once it
-     has revealed (so it does zero work for content already shown).
-========================================================== -->
+
 <script>
 
 document.addEventListener("DOMContentLoaded", function(){
