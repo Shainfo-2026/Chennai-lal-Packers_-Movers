@@ -3,11 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="home.css">
-    <link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="/home.css">
 
+    <!-- Performance: connect early to the CDNs this page actually depends on -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+    <!-- Font Awesome: only needed for 4 footer brand icons, loaded non-render-blocking -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      media="print"
+      onload="this.media='all'"
+    >
+    <noscript>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    </noscript>
 
 
 
@@ -121,12 +134,29 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 }
 </script>
 
-  <!-- Google Analytics -->
-<!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7N8GPYL2L"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Q7N8GPYL2L'); </script>
+  <!-- Google Analytics: loaded async, deferred config after page paints -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.addEventListener('load', function(){
+      var gaScript = document.createElement('script');
+      gaScript.async = true;
+      gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Q7N8GPYL2L';
+      document.head.appendChild(gaScript);
+      gtag('js', new Date());
+      gtag('config', 'G-Q7N8GPYL2L');
+    });
+  </script>
 
-  <script type="module" crossorigin src="/assets/index-B0fQnmjm.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/reactVendor-cn6wcvAz.js">
-  <link rel="stylesheet" crossorigin href="/assets/index-Dtn9G1fc.css">
+  <!--
+    REMOVED: leftover Vite/React build artifacts that were previously here
+    (type="module" index-*.js, modulepreload reactVendor-*.js, index-*.css).
+    This page is plain HTML/vanilla JS — nothing on it uses React. Those
+    three tags were forcing the browser to download, parse, and execute an
+    entire unused React + vendor JS bundle plus a separate CSS bundle on
+    every load. That is almost certainly the single largest contributor to
+    a low performance score here, so it has been deleted rather than kept.
+  -->
 
 </head>
 
@@ -319,8 +349,8 @@ if (currentPath === "") {
 </script>
 
 <body>
-<!-- EMAILJS CDN -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<!-- EMAILJS CDN: deferred — only needed once the user submits the form -->
+<script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <section class="hero">
 
@@ -456,63 +486,68 @@ if (currentPath === "") {
 
 /* ==========================
    EMAILJS INITIALIZATION
+   (guarded — script above is now deferred, so init only
+   after it has actually loaded)
 ========================== */
 
-emailjs.init({
-  publicKey: "yxT-hRvX41RhpOdfZ"
-});
+function initEmailForm(){
 
-/* ==========================
-   FORM SUBMIT
-========================== */
+  if (typeof emailjs === "undefined") {
+    window.addEventListener("load", initEmailForm, { once: true });
+    return;
+  }
 
-document
-.getElementById("quoteForm")
-.addEventListener(
-  "submit",
-  function(e){
+  emailjs.init({
+    publicKey: "yxT-hRvX41RhpOdfZ"
+  });
 
-    e.preventDefault();
+  document
+  .getElementById("quoteForm")
+  .addEventListener(
+    "submit",
+    function(e){
 
-    const submitBtn =
-    document.getElementById("submitBtn");
+      e.preventDefault();
 
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = "Sending...";
+      const submitBtn =
+      document.getElementById("submitBtn");
 
-    const formData = {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = "Sending...";
 
-      name:
-      document.getElementById("name").value,
+      const formData = {
 
-      phone:
-      document.getElementById("phone").value,
+        name:
+        document.getElementById("name").value,
 
-      from:
-      document.getElementById("from").value,
+        phone:
+        document.getElementById("phone").value,
 
-      to:
-      document.getElementById("to").value,
+        from:
+        document.getElementById("from").value,
 
-      service:
-      document.getElementById("service").value
+        to:
+        document.getElementById("to").value,
 
-    };
+        service:
+        document.getElementById("service").value
 
-    emailjs.send(
-      "service_imdmeff",
-      "template_fj46ck6",
-      formData
-    )
-    .then(() => {
+      };
 
-      submitBtn.disabled = false;
-      submitBtn.innerHTML =
-      "Submit Enquiry →";
+      emailjs.send(
+        "service_imdmeff",
+        "template_fj46ck6",
+        formData
+      )
+      .then(() => {
 
-      /* WhatsApp Message */
+        submitBtn.disabled = false;
+        submitBtn.innerHTML =
+        "Submit Enquiry →";
 
-      const message =
+        /* WhatsApp Message */
+
+        const message =
 `🚚 New Moving Enquiry
 
 👤 Name: ${formData.name}
@@ -523,39 +558,43 @@ document
 
 Please contact the customer ASAP.`;
 
-      const whatsappURL =
-      `https://wa.me/919361046387?text=${encodeURIComponent(message)}`;
+        const whatsappURL =
+        `https://wa.me/919361046387?text=${encodeURIComponent(message)}`;
 
-      window.open(
-        whatsappURL,
-        "_blank"
-      );
+        window.open(
+          whatsappURL,
+          "_blank"
+        );
 
-      alert(
-        "✅ Enquiry Sent Successfully!"
-      );
+        alert(
+          "✅ Enquiry Sent Successfully!"
+        );
 
-      document
-      .getElementById("quoteForm")
-      .reset();
+        document
+        .getElementById("quoteForm")
+        .reset();
 
-    })
-    .catch((error) => {
+      })
+      .catch((error) => {
 
-      console.error(error);
+        console.error(error);
 
-      submitBtn.disabled = false;
-      submitBtn.innerHTML =
-      "Submit Enquiry →";
+        submitBtn.disabled = false;
+        submitBtn.innerHTML =
+        "Submit Enquiry →";
 
-      alert(
-        "❌ Failed to send enquiry. Please try again."
-      );
+        alert(
+          "❌ Failed to send enquiry. Please try again."
+        );
 
-    });
+      });
 
-  }
-);
+    }
+  );
+
+}
+
+initEmailForm();
 
 </script>
 </section>
@@ -703,23 +742,6 @@ Please contact the customer ASAP.`;
 
 </div>
 
-<script>
-const serviceReveals = document.querySelectorAll('.reveal');
-
-function revealServices(){
-  serviceReveals.forEach((item)=>{
-    const top = item.getBoundingClientRect().top;
-
-    if(top < window.innerHeight - 100){
-      item.classList.add('active');
-    }
-  });
-}
-
-window.addEventListener('scroll', revealServices);
-revealServices();
-</script>
-
 </section>
 
 
@@ -785,38 +807,6 @@ revealServices();
     </div>
 
   </div>
-
-  <script>
-
-    const processReveal =
-    document.querySelectorAll('.process-section .reveal');
-
-    function revealProcess(){
-
-      processReveal.forEach((item)=>{
-
-        const top =
-        item.getBoundingClientRect().top;
-
-        const visible =
-        window.innerHeight - 100;
-
-        if(top < visible){
-          item.classList.add('active');
-        }
-
-      });
-
-    }
-
-    window.addEventListener(
-      'scroll',
-      revealProcess
-    );
-
-    revealProcess();
-
-  </script>
 
 </section>
 
@@ -908,51 +898,26 @@ revealServices();
   <!-- Main Large Image -->
 
   <div class="img-big">
-    <img src="images/hero_image1.jpeg" alt="Professional packing and loading service in Chennai safe household shifting">
+    <img
+      src="images/hero_image1.jpeg"
+      alt="Professional packing and loading service in Chennai safe household shifting"
+      loading="lazy"
+      decoding="async"
+    >
   </div>
 
   <!-- Small Floating Image -->
 
   <div class="img-small">
-   <img src="images/hero_image2.jpeg" alt="Goods loading in moving truck Chennai packers and movers transportation service">
+   <img
+     src="images/hero_image2.jpeg"
+     alt="Goods loading in moving truck Chennai packers and movers transportation service"
+     loading="lazy"
+     decoding="async"
+   >
   </div>
 
 </div>
-
-
-  <script>
-
-    const whyReveal =
-    document.querySelectorAll('.why-section .reveal');
-
-    function revealWhy(){
-
-      whyReveal.forEach((item)=>{
-
-        const top =
-        item.getBoundingClientRect().top;
-
-        const visible =
-        window.innerHeight - 100;
-
-        if(top < visible){
-
-          item.classList.add('active');
-
-        }
-
-      });
-
-    }
-
-    window.addEventListener(
-      'scroll',
-      revealWhy
-    );
-
-    revealWhy();
-
-  </script>
 
 </section>
 
@@ -1041,42 +1006,6 @@ revealServices();
 
   </div>
 
-  <script>
-
-    const testimonialReveal =
-    document.querySelectorAll(
-      '.testimonials-section .reveal'
-    );
-
-    function revealTestimonials(){
-
-      testimonialReveal.forEach((item)=>{
-
-        const top =
-        item.getBoundingClientRect().top;
-
-        const visible =
-        window.innerHeight - 100;
-
-        if(top < visible){
-
-          item.classList.add('active');
-
-        }
-
-      });
-
-    }
-
-    window.addEventListener(
-      'scroll',
-      revealTestimonials
-    );
-
-    revealTestimonials();
-
-  </script>
-
 </section>
 
 
@@ -1135,40 +1064,6 @@ revealServices();
     </div>
 
   </div>
-
-  <script>
-
-    const ctaReveal =
-    document.querySelectorAll('.premium-cta');
-
-    function revealCTA(){
-
-      ctaReveal.forEach((item)=>{
-
-        const top =
-        item.getBoundingClientRect().top;
-
-        const visible =
-        window.innerHeight - 100;
-
-        if(top < visible){
-
-          item.classList.add('active');
-
-        }
-
-      });
-
-    }
-
-    window.addEventListener(
-      'scroll',
-      revealCTA
-    );
-
-    revealCTA();
-
-  </script>
 
 </section>
 
@@ -1366,30 +1261,44 @@ window.addEventListener("scroll",function(){
 
 </script>
 
+<!-- ==========================================================
+     SCROLL REVEAL (CONSOLIDATED)
+     Previously there were 6 separate `scroll` listeners
+     (services, process, why, testimonials, cta, plus a final
+     catch-all), each calling getBoundingClientRect() on every
+     scroll event — that forces a synchronous layout recalculation
+     repeatedly while the user scrolls, which is expensive on
+     mobile. Replaced with a single IntersectionObserver, which
+     the browser can evaluate far more cheaply off the main
+     scroll path, and which stops observing an element once it
+     has revealed (so it does zero work for content already shown).
+========================================================== -->
 <script>
 
-const reveals =
-document.querySelectorAll(
-'.reveal'
-);
+document.addEventListener("DOMContentLoaded", function(){
 
-window.addEventListener(
-'scroll',
-() => {
+  const revealTargets = document.querySelectorAll(".reveal");
 
-reveals.forEach(el=>{
+  if(!("IntersectionObserver" in window)){
+    // fallback: just show everything immediately
+    revealTargets.forEach(el => el.classList.add("active"));
+    return;
+  }
 
-const top =
-el.getBoundingClientRect().top;
+  const io = new IntersectionObserver(function(entries){
 
-const visible =
-window.innerHeight - 100;
+    entries.forEach(function(entry){
 
-if(top < visible){
-el.classList.add('active');
-}
+      if(entry.isIntersecting){
+        entry.target.classList.add("active");
+        io.unobserve(entry.target);
+      }
 
-});
+    });
+
+  }, { threshold: 0.15, rootMargin: "0px 0px -80px 0px" });
+
+  revealTargets.forEach(el => io.observe(el));
 
 });
 
@@ -1407,6 +1316,8 @@ el.classList.add('active');
       src="/images/logo.png"
       alt="Chennailal Packers & Movers"
       class="footer-logo"
+      loading="lazy"
+      decoding="async"
     >
 
     <h3 class="footer-company-name">
