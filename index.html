@@ -1157,76 +1157,114 @@ initEmailForm();
     OUR SERVICE LOCATIONS
   </div>
 
-
   <h2 class="location-title">
-     Chennai Packers and Movers
+    Chennai Packers and Movers
     <span>Service Areas</span>
   </h2>
 
   <p class="location-sub">
-Professional packing and moving services across Tamil Nadu, offering safe house shifting, office relocation, vehicle transportation, and intercity moving solutions at affordable prices.  </p>
+    Professional packing and moving services across Tamil Nadu, offering safe house shifting, office relocation, vehicle transportation, and intercity moving solutions at affordable prices.
+  </p>
 
-<div class="location-grid">
+  <div class="location-grid">
 
-  <a href="/Contact/">Chennai</a>
-  <a href="/Contact/">Adyar</a>
-  <a href="/Contact/">Anna Nagar</a>
-  <a href="/Contact/">Padi</a>
-  <a href="/Contact/">Ambattur</a>
-  <a href="/Contact/">Tambaram</a>
-  <a href="/Contact/">Sholinganallur</a>
-  <a href="/Contact/">OMR</a>
-  <a href="/Contact/">Velachery</a>
-  <a href="/Contact/">Porur</a>
-  <a href="/Contact/">Madipakkam</a>
-  <a href="/Contact/">Kolathur</a>
-  <a href="/Contact/">Coimbatore</a>
-  <a href="/Contact/">Madurai</a>
-  <a href="/Contact/">Salem</a>
-  <a href="/Contact/">Tiruchirappalli</a>
-  <a href="/Contact/">Vellore</a>
-  <a href="/Contact/">Hosur</a>
+    <a href="/Contact/">Chennai</a>
+    <a href="/Contact/">Adyar</a>
+    <a href="/Contact/">Anna Nagar</a>
+    <a href="/Contact/">Padi</a>
+    <a href="/Contact/">Ambattur</a>
+    <a href="/Contact/">Tambaram</a>
+    <a href="/Contact/">Sholinganallur</a>
+    <a href="/Contact/">OMR</a>
+    <a href="/Contact/">Velachery</a>
+    <a href="/Contact/">Porur</a>
+    <a href="/Contact/">Madipakkam</a>
+    <a href="/Contact/">Kolathur</a>
 
-</div>
+    <a href="/Contact/">Villivakkam</a>
+    <a href="/Contact/">Mogappair</a>
+    <a href="/Contact/">Korattur</a>
+    <a href="/Contact/">Maduravoyal</a>
+    <a href="/Contact/">Koyambedu</a>
+    <a href="/Contact/">Retteri</a>
+    <a href="/Contact/">M.K.B. Nagar</a>
+    <a href="/Contact/">Ayanavaram</a>
+    <a href="/Contact/">ICF</a>
+    <a href="/Contact/">Thirumullaivoyal</a>
+    <a href="/Contact/">Ayyappakkam</a>
+    <a href="/Contact/">Avadi</a>
+    <a href="/Contact/">ECR</a>
+    <a href="/Contact/">Manali</a>
+    <a href="/Contact/">Thiruvottiyur</a>
+    <a href="/Contact/">Vadapalani</a>
+    <a href="/Contact/">Ashok Pillar</a>
+    <a href="/Contact/">T. Nagar</a>
+    <a href="/Contact/">Ekkatuthangal</a>
+    <a href="/Contact/">Guindy</a>
+    <a href="/Contact/">Alapakkam</a>
+    <a href="/Contact/">Adambakkam</a>
+    <a href="/Contact/">Meenambakkam</a>
+    <a href="/Contact/">Thiruvanmiyur</a>
+    <a href="/Contact/">Kilambakkam</a>
+    <a href="/Contact/">Kelambakkam</a>
+    <a href="/Contact/">Pallikaranai</a>
+    <a href="/Contact/">Medavakkam</a>
+    <a href="/Contact/">Jafferkhanpet</a>
+    <a href="/Contact/">Chepauk</a>
+    <a href="/Contact/">St. Thomas Mount</a>
+    <a href="/Contact/">Mangadu</a>
+    <a href="/Contact/">Keelkattalai</a>
+    <a href="/Contact/">Nanmangalam</a>
+    <a href="/Contact/">Kallikuppam</a>
+    <a href="/Contact/">Red Hills</a>
+    <a href="/Contact/">Madhavaram</a>
+    <a href="/Contact/">Moolakadai</a>
+    <a href="/Contact/">Perambur</a>
+    <a href="/Contact/">Aminjikarai</a>
+    <a href="/Contact/">Perungalathur</a>
+
+    <a href="/Contact/">Coimbatore</a>
+    <a href="/Contact/">Madurai</a>
+    <a href="/Contact/">Salem</a>
+    <a href="/Contact/">Tiruchirappalli</a>
+    <a href="/Contact/">Vellore</a>
+    <a href="/Contact/">Hosur</a>
+
+  </div>
 
   <script>
+    document.querySelectorAll(".faq-question")
+    .forEach(button => {
 
-document.querySelectorAll(".faq-question")
-.forEach(button=>{
+      button.addEventListener("click", () => {
 
-button.addEventListener("click",()=>{
+        const item = button.parentElement;
 
-const item=
-button.parentElement;
+        document.querySelectorAll(".faq-item")
+        .forEach(faq => {
 
-document
-.querySelectorAll(".faq-item")
-.forEach(faq=>{
+          if (faq !== item) {
+            faq.classList.remove("active");
 
-if(faq!==item){
+            faq.querySelector("span")
+            .innerHTML = "+";
+          }
 
-faq.classList.remove("active");
+        });
 
-faq.querySelector("span")
-.innerHTML="+";
+        item.classList.toggle("active");
 
-}
+        button.querySelector("span")
+        .innerHTML =
+        item.classList.contains("active")
+        ? "−"
+        : "+";
 
-});
+      });
 
-item.classList.toggle("active");
+    });
+  </script>
 
-button.querySelector("span")
-.innerHTML=
-item.classList.contains("active")
-? "−"
-: "+";
-
-});
-
-});
-
-</script>
 </section>
 
 

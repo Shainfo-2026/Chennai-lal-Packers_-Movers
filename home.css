@@ -217,20 +217,27 @@ body{
   .nav-links li{width:100%;}
   .nav-links a{display:block;padding:15px 25px;width:100%;}
 
-  .dropdown-menu{
-    position:static;
-    width:100%;
-    margin-top:0;
-    display:none;
-    background:#f9f9f9;
-    border-radius:0;
-    box-shadow:none;
-  }
+ .dropdown-menu{
+  position:static;
+  width:100%;
+  margin-top:0;
+  display:none;
+  background:rgba(0,0,0,.15);   /* subtle dark tint over the purple navbar, not light gray */
+  border-radius:0;
+  box-shadow:none;
+}
+.dropdown-menu.show{display:block;}
 
-  .dropdown-menu.show{display:block;}
-  .dropdown-menu li a{color:#ffffff;padding-left:45px;}
-  .dropdown-menu li a:hover{background:rgba(255,255,255,.94);color:#106B2D;}
+.dropdown-menu li a{
+  color:#ffffff;
+  padding:14px 25px 14px 45px;   /* added top/bottom padding for a real tap target */
+  font-size:14px;
+}
 
+.dropdown-menu li a:hover{
+  background:var(--gold);
+  color:var(--purple);           /* matches your brand hover style used elsewhere */
+}
   .dropdown-btn{width:100%;text-align:left;padding:15px 25px;}
   .logo-text{font-size:18px;}
   .logo-img{width:45px;height:45px;}
