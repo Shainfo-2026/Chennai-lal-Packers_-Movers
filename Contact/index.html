@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -164,6 +163,23 @@ body{
   color:var(--primary);
 }
 
+/* Clickable call item */
+a.sps-info-item{
+  text-decoration:none;
+  cursor:pointer;
+  transition:.25s ease;
+}
+
+a.sps-info-item:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 25px rgba(63,13,125,.18);
+  border-color:var(--gold);
+}
+
+a.sps-info-item:active{
+  transform:translateY(0);
+}
+
 .sps-contact-card{
   background:rgba(255,255,255,.92);
   backdrop-filter:blur(18px);
@@ -311,7 +327,7 @@ body{
             <li><a href="/services/Transportation/">Transportation</a></li>
             <li><a href="/services/CommercialMoves/">Commercial Moves</a></li>
             <li><a href="/services/ACinstallationsUnistallation/">AC installations & Unistallation</a></li>
-            <li><a href="/services/GodownShifting/">Godown Shifting</a></li>
+            <li><a href="/services/GodownShifting/">Warehouse Shifting</a></li>
 
         </ul>
 
@@ -484,10 +500,10 @@ transparent pricing.
 
 <div class="sps-contact-info">
 
-<div class="sps-info-item">
+<a href="tel:+919361046387" class="sps-info-item">
 <span>📞</span>
 <p>+91 93610 46387</p>
-</div>
+</a>
 
 <div class="sps-info-item">
 <span>📍</span>
@@ -527,7 +543,7 @@ Chennai – 600050.
 <option>House Shifting</option>
 <option>Office Relocation</option>
 <option>Vehicle Transportation</option>
-<option>Godown Shifting</option>
+<option>Warehouse Shifting</option>
 <option>AC Installation</option>
 <option>Commercial Moves</option>
 </select>
@@ -648,6 +664,85 @@ Please contact the customer ASAP.`;
 });
 </script>
 
+
+<style>
+.sps-float-wrap{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  z-index:99999;
+  align-items:center;
+}
+
+.sps-float-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  text-decoration:none;
+  color:#fff;
+  font-size:24px;
+  box-shadow:0 6px 16px rgba(0,0,0,.35);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.sps-float-btn:hover{
+  transform:scale(1.08);
+  box-shadow:0 10px 22px rgba(0,0,0,.4);
+}
+
+.sps-float-btn:active{
+  transform:scale(.95);
+}
+
+.sps-call-btn{
+  background:linear-gradient(135deg,#ff7a59,#ff4d4d);
+}
+
+.sps-whatsapp-btn{
+  background:#25D366;
+}
+
+@media(max-width:480px){
+  .sps-float-wrap{
+    right:16px;
+    bottom:16px;
+    gap:12px;
+  }
+  .sps-float-btn{
+    width:50px;
+    height:50px;
+    font-size:20px;
+  }
+}
+</style>
+
+<div class="sps-float-wrap">
+
+  <a
+    href="tel:9361046387"
+    class="sps-float-btn sps-call-btn"
+    aria-label="Call +91 93610 46387"
+  >
+    <i class="fa-solid fa-phone"></i>
+  </a>
+
+  <a
+    href="https://wa.me/919361046387?text=Hi%2C%20I%27d%20like%20a%20free%20moving%20quote%20from%20Chennailal%20Packers%20%26%20Movers."
+    class="sps-float-btn sps-whatsapp-btn"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat on WhatsApp"
+  >
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+</div>
 </body>
 
 
@@ -785,7 +880,7 @@ el.classList.add('active');
     </a>
 
     <a href="/services/GodownShifting/">
-       Godown Shifting
+       Warehouse Shifting
     </a>
 
   </div>
@@ -885,9 +980,9 @@ el.classList.add('active');
   </div>
 
 </footer>
+
+
+
+
+
 </html>
-
-
-
-
-

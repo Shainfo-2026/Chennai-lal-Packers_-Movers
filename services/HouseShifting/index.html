@@ -864,4 +864,84 @@ officeObserver.observe(item);
 </script>
 
 </body>
+
+
+<style>
+.sps-float-wrap{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  z-index:99999;
+  align-items:center;
+}
+
+.sps-float-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  text-decoration:none;
+  color:#fff;
+  font-size:24px;
+  box-shadow:0 6px 16px rgba(0,0,0,.35);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.sps-float-btn:hover{
+  transform:scale(1.08);
+  box-shadow:0 10px 22px rgba(0,0,0,.4);
+}
+
+.sps-float-btn:active{
+  transform:scale(.95);
+}
+
+.sps-call-btn{
+  background:linear-gradient(135deg,#ff7a59,#ff4d4d);
+}
+
+.sps-whatsapp-btn{
+  background:#25D366;
+}
+
+@media(max-width:480px){
+  .sps-float-wrap{
+    right:16px;
+    bottom:16px;
+    gap:12px;
+  }
+  .sps-float-btn{
+    width:50px;
+    height:50px;
+    font-size:20px;
+  }
+}
+</style>
+
+<div class="sps-float-wrap">
+
+  <a
+    href="tel:9361046387"
+    class="sps-float-btn sps-call-btn"
+    aria-label="Call +91 93610 46387"
+  >
+    <i class="fa-solid fa-phone"></i>
+  </a>
+
+  <a
+    href="https://wa.me/919361046387?text=Hi%2C%20I%27d%20like%20a%20free%20moving%20quote%20from%20Chennailal%20Packers%20%26%20Movers."
+    class="sps-float-btn sps-whatsapp-btn"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat on WhatsApp"
+  >
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+</div>
 </html>
