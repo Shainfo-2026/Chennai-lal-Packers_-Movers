@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.chennailalpackersmovers.com/sitemap.xml
+Sitemap: https://www.chennailalpackersmovers.com/Blog/sitemap.xml
+
+
+
+
+
+
+
+
+
+

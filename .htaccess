@@ -1,0 +1,51 @@
+RewriteEngine On
+
+RewriteRule ^blog/([^/]+)/?$ /Blog/index.html [L,QSA]
+
+RewriteRule ^blog/?$ /Blog/index.html [L,QSA]
+
+RewriteEngine On
+
+# ------------------------------------------------------
+# Force HTTPS
+# ------------------------------------------------------
+
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+
+# ------------------------------------------------------
+# Blog clean URLs
+#
+# /Blog/
+# /Blog/blog-name/
+# ------------------------------------------------------
+
+RewriteRule ^Blog/?$ /index.html [L]
+
+RewriteRule ^Blog/([^/]+)/?$ /index.html [L]
+
+
+# ------------------------------------------------------
+# Remove .html from normal pages
+# ------------------------------------------------------
+
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^(.+)\.html$ /$1 [R=301,L]
+
+
+# ------------------------------------------------------
+# Internally load .html files when clean URL is used
+# ------------------------------------------------------
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+?)/?$ /$1.html [L]
+
+
+# ------------------------------------------------------
+# Prevent directory listing
+# ------------------------------------------------------
+
+Options -Indexes
